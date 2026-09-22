@@ -1,0 +1,113 @@
+.success-path-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(210px, 0.55fr) auto;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 18px;
+  border: 1px solid rgba(42, 212, 199, 0.42);
+  border-radius: 8px;
+  background: rgba(7, 17, 31, 0.92);
+  box-shadow: 0 18px 52px rgba(0, 0, 0, 0.24);
+}
+
+.success-path-kicker,
+.success-path-score span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.success-path-copy h2 {
+  margin: 5px 0 0;
+  font-size: 1.28rem;
+}
+
+.success-path-copy p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.success-path-mix {
+  margin-top: 10px;
+  color: #cbd8ea;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.success-path-score {
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  background: rgba(147, 165, 189, 0.07);
+}
+
+.success-path-score strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.7rem;
+}
+
+.success-path-score small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.success-path-track {
+  height: 8px;
+  margin-top: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(147, 165, 189, 0.16);
+}
+
+.success-path-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--good);
+}
+
+.success-path-start {
+  min-height: 48px;
+  padding: 0 17px;
+  border: 1px solid var(--good);
+  border-radius: 6px;
+  color: #061016;
+  background: var(--good);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.success-path-start:hover {
+  filter: brightness(1.06);
+}
+
+@media (max-width: 900px) {
+  .success-path-panel {
+    grid-template-columns: minmax(0, 1fr) minmax(190px, 0.5fr);
+  }
+
+  .success-path-start {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 660px) {
+  .success-path-panel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .success-path-start {
+    grid-column: auto;
+    width: 100%;
+  }
+}

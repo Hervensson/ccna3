@@ -268,7 +268,9 @@ function renderQuestion() {
   els.sessionTitle.textContent = `Question ${state.current + 1} sur ${state.items.length}`;
   els.sessionMode.textContent = state.mode === "errors"
     ? "Session ciblée sur tes erreurs précédentes."
-    : "Session aléatoire type examen Cisco / NetAcad.";
+    : state.mode === "success"
+      ? "Parcours personnalisé : erreurs, questions inédites et thèmes faibles."
+      : "Session aléatoire type examen Cisco / NetAcad.";
   els.progressText.textContent = `${answered}/${state.items.length}`;
   els.progressFill.style.width = `${(answered / state.items.length) * 100}%`;
   els.prevBtn.disabled = state.current === 0;
