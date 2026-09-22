@@ -544,21 +544,22 @@ window.CCNA_QUESTIONS = [
     "sourceNumber": 26,
     "question": "Reportez-vous à l’illustration. Quelles deux configurations seraient utilisées pour créer et appliquer une liste d’accès standard sur R1, de sorte que seuls les périphériques réseau 10.0.70.0/25 sont autorisés à accéder au serveur de base de données interne? Citez-en deux.",
     "options": [
-      "R1 (config) # access-list 5 permit 10.0.70.0 0.0.127",
+      "R1(config)# access-list 5 permit 10.0.70.0 0.0.0.127",
       "R1(config)# access-list 5 permit 10.0.54.0 0.0.1.255",
       "R1(config)# interface GigabitEthernet0/0\nR1(config-if)# ip access-group 5 out",
       "R1(config)# interface Serial0/0/0\nR1(config-if)# ip access-group 5 in",
       "R1(config)# access-list 5 permit any"
     ],
     "correct": [
-      0
+      0,
+      2
     ],
-    "explanation": "",
+    "explanation": "La liste standard autorise le réseau source 10.0.70.0/25 avec le masque générique 0.0.0.127. Comme une ACL standard filtre uniquement l’adresse source, elle est placée près de la destination, en sortie de G0/0 sur R1.",
     "images": [
       "assets/image20.jpeg"
     ],
-    "type": "single",
-    "expectedChoices": 1,
+    "type": "multi",
+    "expectedChoices": 2,
     "theme": "ACL"
   },
   {
@@ -720,10 +721,10 @@ window.CCNA_QUESTIONS = [
     "sourceNumber": 35,
     "question": "Reportez-vous à l’illustration. La société a fourni des téléphones IP aux employés sur le réseau 192.168.10.0/24 et le trafic vocal aura besoin de priorité sur le trafic de données. Quel est le meilleur type et placement ACL à utiliser dans cette situation?",
     "options": [
-      "ACL entrante étendue sur R3 G0/0",
-      "ACL entrante standard sur les lignes R1 vty",
-      "ACL entrante étendue sur R3 G0/0",
-      "ACL entrante standard sur R1 G0/1"
+      "ACL étendue entrante sur R1 G0/0",
+      "ACL étendue sortante sur l’interface WAN de R2 vers Internet",
+      "ACL étendue sortante sur R2 S0/0/1",
+      "ACL étendues entrantes sur R1 G0/0 et G0/1"
     ],
     "correct": [
       0
@@ -1250,12 +1251,16 @@ window.CCNA_QUESTIONS = [
       "Les valeurs d’ID du routeur n’étaient pas les critères utilisés pour sélectionner le DR et le BDR.",
       "Cette interface utilise la priorité par défaut."
     ],
-    "correct": [],
-    "explanation": "",
+    "correct": [
+      2,
+      3,
+      4
+    ],
+    "explanation": "L’intervalle Hello affiché est de 10 secondes et le prochain paquet est dû dans 1 seconde : 9 secondes se sont donc écoulées. Le DR est joignable sur GigabitEthernet0/0. La priorité locale vaut 0, ce qui exclut ce routeur de l’élection DR/BDR et montre que l’ID de routeur n’était pas le critère décisif.",
     "images": [
       "assets/image27.png"
     ],
-    "type": "study",
+    "type": "multi",
     "expectedChoices": 3,
     "theme": "OSPF"
   },
@@ -1390,13 +1395,12 @@ window.CCNA_QUESTIONS = [
       "le routeur avec l’ID de routeur le plus bas",
       "le routeur avec l’adresse IP la plus basse sur l’interface de connexion",
       "le routeur avec l’adresse IP la plus élevée sur l’interface de connexion",
-      "le routeur avec l’ID de routeur le plus élevé",
-      "_Expliquez :Dans l’état ExStart, les deux routeurs décident quel routeur enverra les paquets DBD en premier. Le routeur avec l’ID de routeur le plus élevé sera le premier routeur à envoyer des paquets DBD pendant l’état d’échange"
+      "le routeur avec l’ID de routeur le plus élevé"
     ],
     "correct": [
       3
     ],
-    "explanation": "",
+    "explanation": "Dans l’état ExStart, les deux routeurs décident quel routeur enverra les paquets DBD en premier. Le routeur avec l’ID de routeur le plus élevé sera le premier routeur à envoyer des paquets DBD pendant l’état d’échange",
     "images": [],
     "type": "single",
     "expectedChoices": 1,
@@ -2794,8 +2798,7 @@ window.CCNA_QUESTIONS = [
       "ip nat inside source static 172.19.89.13 198.133.219.65",
       "ip nat outside",
       "ip nat inside source list 24 interface serial 0/1/0 overload",
-      "ip nat pool POOL-STAT 64.100.14.17 64.100.14.30 netmask 255.255.255.240",
-      "=========================================="
+      "ip nat pool POOL-STAT 64.100.14.17 64.100.14.30 netmask 255.255.255.240"
     ],
     "correct": [
       3
@@ -3261,19 +3264,17 @@ window.CCNA_QUESTIONS = [
     "question": "Comment la virtualisation facilite-t-elle la reprise après sinistre dans un centre de données ?",
     "options": [
       "Le matériel n’a pas besoin d’être identique.",
-      "(Autre cas) Le matériel sur le site de récupération ne doit pas nécessairement être identique à l’équipement de production.",
       "L’alimentation est toujours fournie.",
       "Moins d’énergie est consommée.",
       "Le provisionnement du serveur est plus rapide."
     ],
     "correct": [
-      0,
-      1
+      0
     ],
     "explanation": "La reprise après sinistre est la manière dont une entreprise s’y prend pour accéder aux applications, aux données et au matériel susceptibles d’être affectés lors d’un sinistre. La virtualisation offre une indépendance matérielle, ce qui signifie que le site de reprise après sinistre n’a pas besoin d’avoir exactement l’équipement que l’équipement en production. Le provisionnement de serveur est pertinent lorsqu’un serveur est créé pour la première fois. Bien que les centres de données disposent de générateurs de secours, l’ensemble du centre de données est conçu pour la reprise après sinistre. Un centre de données particulier ne pourrait jamais garantir que le centre de données lui-même ne serait jamais sans électricité.",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "Virtualisation / Cloud"
   },
   {
@@ -3884,13 +3885,12 @@ window.CCNA_QUESTIONS = [
       "centre de données",
       "services cloud",
       "virtualisation",
-      "serveurs dédiés",
-      "_Expliquez : La virtualisation des serveurs tire parti des ressources inactives et consolide le nombre de serveurs requis. Cela permet également à plusieurs systèmes d’exploitation d’exister sur une seule plate-forme matérielle."
+      "serveurs dédiés"
     ],
     "correct": [
       2
     ],
-    "explanation": "",
+    "explanation": "La virtualisation des serveurs tire parti des ressources inactives et consolide le nombre de serveurs requis. Cela permet également à plusieurs systèmes d’exploitation d’exister sur une seule plate-forme matérielle.",
     "images": [],
     "type": "single",
     "expectedChoices": 1,
@@ -4071,7 +4071,7 @@ window.CCNA_QUESTIONS = [
   {
     "id": 200,
     "sourceNumber": 199,
-    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :",
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\naccess-list 210 permit tcp 172.18.20.0 0.0.0.31 172.18.20.32 0.0.0.31 eq ftp\nSi un paquet avec une adresse source de 172.18.20.55, une adresse de destination de 172.18.20.3 et un protocole de 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
     "options": [
       "autorisé",
       "refusé"
@@ -4079,7 +4079,7 @@ window.CCNA_QUESTIONS = [
     "correct": [
       1
     ],
-    "explanation": "",
+    "explanation": "L’entrée autorise uniquement les sources 172.18.20.0 à 172.18.20.31 vers les destinations 172.18.20.32 à 172.18.20.63 en FTP. Le paquet indiqué inverse ces plages, ne correspond pas à l’entrée et est donc refusé par le deny implicite.",
     "images": [],
     "type": "single",
     "expectedChoices": 1,
