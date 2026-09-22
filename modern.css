@@ -85,6 +85,42 @@ textarea:focus-visible,
   letter-spacing: 0;
 }
 
+.appearance-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex: 0 0 auto;
+  gap: 2px;
+  margin-left: 6px;
+  padding: 3px;
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  background: var(--panel-2);
+}
+
+.appearance-switch button {
+  min-width: 48px;
+  min-height: 28px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.appearance-switch button:hover {
+  background: var(--panel);
+  color: var(--text);
+}
+
+.appearance-switch button[aria-pressed="true"] {
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 2px 7px rgba(31, 58, 52, 0.14);
+}
+
 .brand-mark {
   border-color: var(--accent);
   background: var(--accent);
@@ -567,6 +603,224 @@ input[type="number"] {
   color: var(--text);
 }
 
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1113;
+  --panel: #111a1c;
+  --panel-2: #182326;
+  --line: #3a4b4e;
+  --line-soft: #29383b;
+  --text: #edf5f3;
+  --muted: #9eafab;
+  --accent: #43d4b6;
+  --accent-2: #87a7ff;
+  --warn: #f1c45e;
+  --bad: #ff7a85;
+  --good: #58d6a6;
+  --shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme="dark"] body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .home-topbar,
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .result-header,
+html[data-theme="dark"] .bottombar {
+  border-color: var(--line-soft);
+  background: rgba(17, 26, 28, 0.97);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"] .study-nav button:hover,
+html[data-theme="dark"] .appearance-switch button:hover,
+html[data-theme="dark"] .appearance-switch button[aria-pressed="true"] {
+  background: #243235;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .study-nav button.active,
+html[data-theme="dark"] .tab-button.active {
+  background: var(--accent);
+  color: #071411;
+  box-shadow: 0 4px 14px rgba(67, 212, 182, 0.18);
+}
+
+html[data-theme="dark"] .tracking-card,
+html[data-theme="dark"] .polish-panel,
+html[data-theme="dark"] .pro-panel,
+html[data-theme="dark"] .learning-dashboard,
+html[data-theme="dark"] .history-panel,
+html[data-theme="dark"] .progress-transfer-panel,
+html[data-theme="dark"] .success-path-panel,
+html[data-theme="dark"] .progress-summary,
+html[data-theme="dark"] .progress-coach,
+html[data-theme="dark"] .progress-chart-panel,
+html[data-theme="dark"] .progress-themes-panel,
+html[data-theme="dark"] .mastery-panel,
+html[data-theme="dark"] .exact-tracking-panel,
+html[data-theme="dark"] .question-frequency-panel,
+html[data-theme="dark"] .old-errors-details,
+html[data-theme="dark"] .flashcard-panel,
+html[data-theme="dark"] .install-panel,
+html[data-theme="dark"] .polish-mini,
+html[data-theme="dark"] .compact-home-controls,
+html[data-theme="dark"] .bank-tools,
+html[data-theme="dark"] .theme-modal-card,
+html[data-theme="dark"] .exam-shell,
+html[data-theme="dark"] .result-screen,
+html[data-theme="dark"] .question-panel {
+  border-color: var(--line-soft);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+html[data-theme="dark"] .polish-main,
+html[data-theme="dark"] .question-map {
+  border-color: #1e3732;
+  background: #091714;
+}
+
+html[data-theme="dark"] .compact-home-controls button,
+html[data-theme="dark"] .correction-size-field,
+html[data-theme="dark"] .export-progress,
+html[data-theme="dark"] .import-progress,
+html[data-theme="dark"] .secondary-action,
+html[data-theme="dark"] .ghost-button,
+html[data-theme="dark"] .flag-button,
+html[data-theme="dark"] .tab-button,
+html[data-theme="dark"] .modal-close,
+html[data-theme="dark"] .theme-modal-close,
+html[data-theme="dark"] .bank-question button,
+html[data-theme="dark"] .flashcard-actions button,
+html[data-theme="dark"] .progress-coach button,
+html[data-theme="dark"] .revision-card button {
+  border-color: var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+html[data-theme="dark"] .compact-home-controls .primary-action,
+html[data-theme="dark"] .compact-home-controls .continue-action,
+html[data-theme="dark"] .success-path-start,
+html[data-theme="dark"] .primary-action {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #071411;
+}
+
+html[data-theme="dark"] .compact-home-controls .correction-action,
+html[data-theme="dark"] .pill,
+html[data-theme="dark"] .training-feedback,
+html[data-theme="dark"] .explanation {
+  border-color: #285d53;
+  background: #14332e;
+  color: #a9eee0;
+}
+
+html[data-theme="dark"] .compact-home-controls .unseen-action {
+  border-color: #6d5a2c;
+  background: #352d19;
+  color: #f6d98d;
+}
+
+html[data-theme="dark"] .success-path-score {
+  border-color: #285d53;
+  background: #14332e;
+}
+
+html[data-theme="dark"] .success-path-score strong,
+html[data-theme="dark"] .success-path-score small {
+  color: #a9eee0;
+}
+
+html[data-theme="dark"] .daily-goal-card,
+html[data-theme="dark"] .progress-metric,
+html[data-theme="dark"] .mastery-card,
+html[data-theme="dark"] .priority-item,
+html[data-theme="dark"] .old-error-card,
+html[data-theme="dark"] .revision-card,
+html[data-theme="dark"] .flashcard,
+html[data-theme="dark"] .bank-question,
+html[data-theme="dark"] .frequency-row,
+html[data-theme="dark"] .progress-theme-row,
+html[data-theme="dark"] .tracking-mini,
+html[data-theme="dark"] .stat,
+html[data-theme="dark"] .score-card,
+html[data-theme="dark"] .result-card,
+html[data-theme="dark"] .theme-stat-card,
+html[data-theme="dark"] .history-item,
+html[data-theme="dark"] .theme-menu,
+html[data-theme="dark"] .theme-menu-head,
+html[data-theme="dark"] .theme-choice,
+html[data-theme="dark"] .result-tabs {
+  border-color: var(--line-soft);
+  background: var(--panel-2);
+}
+
+html[data-theme="dark"] .correction-size-field select,
+html[data-theme="dark"] .bank-tools input,
+html[data-theme="dark"] .bank-tools select,
+html[data-theme="dark"] .theme-menu select,
+html[data-theme="dark"] .matching-row select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] input[type="number"] {
+  border-color: var(--line);
+  background: #0e1719;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .layout {
+  background: var(--bg);
+}
+
+html[data-theme="dark"] .choice,
+html[data-theme="dark"] .matching-row {
+  border-color: var(--line-soft);
+  background: #162124;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .choice:hover {
+  border-color: #397a6e;
+  background: #19302c;
+}
+
+html[data-theme="dark"] .choice.selected {
+  border-color: var(--accent);
+  background: #14332e;
+}
+
+html[data-theme="dark"] .choice-mark {
+  border-color: #5f706c;
+  background: #0e1719;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .choice.selected .choice-mark {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #071411;
+}
+
+html[data-theme="dark"] .question-image {
+  border-color: var(--line-soft);
+  background: var(--panel-2);
+}
+
+html[data-theme="dark"] .progress-track,
+html[data-theme="dark"] .success-path-track,
+html[data-theme="dark"] .daily-progress,
+html[data-theme="dark"] .progress-theme-track {
+  background: #2b393b;
+}
+
+html[data-theme="dark"] .theme-modal {
+  background: rgba(3, 8, 9, 0.78);
+}
+
 @media (max-width: 900px) {
   .start-screen h1 {
     font-size: 40px;
@@ -596,6 +850,12 @@ input[type="number"] {
 
   .home-topbar .brand-row {
     justify-content: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .home-topbar .appearance-switch {
+    margin-left: auto;
   }
 
   .home-topbar .study-nav {
