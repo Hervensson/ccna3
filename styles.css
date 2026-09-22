@@ -363,7 +363,7 @@ button {
 
 .matching-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(170px, 280px);
+  grid-template-columns: minmax(0, 0.8fr) minmax(280px, 1.2fr);
   gap: 12px;
   align-items: center;
   padding: 14px;
@@ -378,6 +378,7 @@ button {
 
 .matching-row select {
   width: 100%;
+  max-width: 100%;
   min-height: 40px;
   border-radius: 6px;
   border: 1px solid var(--line);

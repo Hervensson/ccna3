@@ -358,6 +358,25 @@ function renderMatching(question, item) {
   item.matchingAnswer ||= {};
   const answers = question.matching?.answers || [];
   const prompts = question.matching?.prompts || [];
+  if (!Array.isArray(item.matchingOrder) || item.matchingOrder.length !== answers.length) {
+    item.matchingOrder = shuffle(answers.map((_, index) => index));
+  }
+  const orderedAnswers = item.matchingOrder.map((index) => answers[index]).filter(Boolean);
+  const selects = [];
+
+  function refreshAvailability() {
+    selects.forEach((select, selectIndex) => {
+      const usedElsewhere = new Set(
+        Object.entries(item.matchingAnswer)
+          .filter(([index, value]) => Number(index) !== selectIndex && value)
+          .map(([, value]) => value)
+      );
+      [...select.options].forEach((option) => {
+        option.disabled = Boolean(option.value && usedElsewhere.has(option.value));
+      });
+    });
+  }
+
   prompts.forEach((prompt, index) => {
     const row = document.createElement("label");
     row.className = "matching-row";
@@ -366,27 +385,31 @@ function renderMatching(question, item) {
     text.textContent = prompt;
 
     const select = document.createElement("select");
-    select.value = item.matchingAnswer[index] || "";
     const empty = document.createElement("option");
     empty.value = "";
     empty.textContent = "Choisir...";
     select.append(empty);
-    answers.forEach((answer) => {
+    orderedAnswers.forEach((answer) => {
       const option = document.createElement("option");
       option.value = answer;
       option.textContent = answer;
       select.append(option);
     });
+    select.value = item.matchingAnswer[index] || "";
     select.addEventListener("change", () => {
       item.matchingAnswer[index] = select.value;
       saveSession();
       renderQuestionGrid();
       updateProgressOnly();
+      refreshAvailability();
     });
 
+    selects.push(select);
     row.append(text, select);
     els.answerArea.append(row);
   });
+  refreshAvailability();
+  saveSession();
 }
 
 function chooseAnswer(question, item, displayIndex) {

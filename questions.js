@@ -127,7 +127,8 @@ window.CCNA_QUESTIONS = [
       "answers": [
         "Fournir un accès réseau à l’utilisateur / Constituer la périphérie du réseau",
         "Implémenter une politique d’accès réseau / Définir les limites de routage de couche 3",
-        "Fournir une connectivité haut débit du réseau fédérateur / Constituer un associateur de tous les blocs de campus"
+        "Fournir une connectivité haut débit du réseau fédérateur / Constituer un associateur de tous les blocs de campus",
+        "Implémenter des pare-feu personnels sur les ordinateurs clients"
       ],
       "correct": [
         "Fournir un accès réseau à l’utilisateur / Constituer la périphérie du réseau",
@@ -843,7 +844,8 @@ window.CCNA_QUESTIONS = [
         "périphériques plaçant des données sur la boucle locale",
         "appareils et câblage interne qui se trouvent à la périphérie du réseau de l’entreprise et se connectent à la liaison d’un opérateur",
         "point établi dans un bâtiment ou un complexe pour séparer l’équipement du client et celui du fournisseur d’accès",
-        "périphériques du client qui transfèrent les données à partir du réseau d’un client ou d’un ordinateur hôte pour qu’elles soient transmises via le WAN"
+        "périphériques du client qui transfèrent les données à partir du réseau d’un client ou d’un ordinateur hôte pour qu’elles soient transmises via le WAN",
+        "point de présence représentant l’installation ou le bâtiment du fournisseur d’accès local qui connecte l’équipement d’abonné au réseau du fournisseur"
       ],
       "correct": [
         "périphériques plaçant des données sur la boucle locale",
@@ -1545,7 +1547,9 @@ window.CCNA_QUESTIONS = [
         "périphériques et câblage intérieur situés à la périphérie de l’entreprise et connectés à une liaison opérateur",
         "appareils qui fournissent une interface à laquelle les clients peuvent se connecter dans le cloud WAN",
         "dispositifs clients qui transmettent les données d’un réseau client pour transmission sur le WAN",
-        "une connexion physique du client au fournisseur de services POP"
+        "une connexion physique du client au fournisseur de services POP",
+        "installation du fournisseur de services qui relie le CPE au réseau du fournisseur",
+        "emplacement où la responsabilité de la connexion passe du client au fournisseur de services"
       ],
       "correct": [
         "périphériques et câblage intérieur situés à la périphérie de l’entreprise et connectés à une liaison opérateur",
@@ -2109,7 +2113,14 @@ window.CCNA_QUESTIONS = [
     "sourceNumber": 102,
     "question": "Faites correspondre la méthode HTTP avec l’opération RESTful.",
     "options": [
-      "POST –>> Créer\nOBTENIR –>> Lis\nMETTRE/PATCH –>> Mettre à jour/Remplacer ? Modifier\nDelet –>> Supprimer"
+      "POST",
+      "GET",
+      "PUT/PATCH",
+      "DELETE",
+      "create",
+      "read",
+      "update",
+      "delete"
     ],
     "correct": [],
     "explanation": "",
@@ -2122,21 +2133,21 @@ window.CCNA_QUESTIONS = [
     "matching": {
       "prompts": [
         "POST",
-        "OBTENIR",
-        "METTRE/PATCH",
-        "Delet"
+        "GET",
+        "PUT/PATCH",
+        "DELETE"
       ],
       "answers": [
-        "Créer",
-        "Lis",
-        "Mettre à jour/Remplacer ? Modifier",
-        "Supprimer"
+        "create",
+        "read",
+        "update",
+        "delete"
       ],
       "correct": [
-        "Créer",
-        "Lis",
-        "Mettre à jour/Remplacer ? Modifier",
-        "Supprimer"
+        "create",
+        "read",
+        "update",
+        "delete"
       ]
     }
   },
@@ -3713,20 +3724,43 @@ window.CCNA_QUESTIONS = [
     "sourceNumber": 163,
     "question": "Mettez en correspondance la méthode HTTP avec l’opération RESTful.",
     "options": [
-      "vidéo",
-      "voix",
-      "données"
+      "POST",
+      "GET",
+      "PUT/PATCH",
+      "DELETE",
+      "create",
+      "read",
+      "update",
+      "delete"
     ],
-    "correct": [
-      0
-    ],
+    "correct": [],
     "explanation": "",
     "images": [
       "assets/image9.jpeg"
     ],
-    "type": "single",
-    "expectedChoices": 1,
-    "theme": "Automatisation"
+    "type": "matching",
+    "expectedChoices": 4,
+    "theme": "Automatisation",
+    "matching": {
+      "prompts": [
+        "POST",
+        "GET",
+        "PUT/PATCH",
+        "DELETE"
+      ],
+      "answers": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "correct": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
   },
   {
     "id": 184,
@@ -4176,15 +4210,44 @@ window.CCNA_QUESTIONS = [
     "id": 207,
     "sourceNumber": 206,
     "question": "Mettez en correspondance la méthode API RESTful à la fonction CRUD.",
-    "options": [],
+    "options": [
+      "POST",
+      "GET",
+      "PUT/PATCH",
+      "DELETE",
+      "create",
+      "read",
+      "update",
+      "delete"
+    ],
     "correct": [],
     "explanation": "",
     "images": [
       "assets/image24.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "Automatisation"
+    "type": "matching",
+    "expectedChoices": 4,
+    "theme": "Automatisation",
+    "matching": {
+      "prompts": [
+        "POST",
+        "GET",
+        "PUT/PATCH",
+        "DELETE"
+      ],
+      "answers": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "correct": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
   },
   {
     "id": 208,

@@ -1,4 +1,4 @@
-const CACHE_NAME = "ccna-ensa-v4";
+const CACHE_NAME = "ccna-ensa-v5";
 const CORE_ASSETS = [
   "./", "./index.html", "./styles.css", "./enhance.css", "./ux-polish.css",
   "./mobile-history.css", "./mobile-fix.css", "./revision-pro.css", "./training-mode.css",
