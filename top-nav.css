@@ -1,0 +1,87 @@
+.study-shell.nav-relocated {
+  margin-top: 10px;
+}
+
+.home-topbar {
+  position: sticky;
+  top: 8px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: rgba(7, 17, 31, 0.94);
+  backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+
+.home-topbar .brand-row {
+  position: static !important;
+  top: auto !important;
+  z-index: auto !important;
+  flex: 0 0 auto;
+  justify-content: flex-start;
+  min-width: max-content;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.home-topbar .study-nav {
+  position: static;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
+}
+
+.home-topbar .study-nav button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+  pointer-events: auto;
+}
+
+@media (max-width: 660px) {
+  .home-topbar {
+    top: 5px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .home-topbar .study-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    justify-content: stretch;
+    width: 100%;
+    gap: 6px;
+    overflow: visible;
+  }
+
+  .home-topbar .study-nav button {
+    min-height: 42px;
+    padding: 0 8px;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .home-topbar .study-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

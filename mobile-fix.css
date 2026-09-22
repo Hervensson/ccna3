@@ -1,0 +1,79 @@
+@media (max-width: 660px) {
+  *,
+  *::before,
+  *::after {
+    max-width: 100%;
+  }
+
+  .app,
+  .start-screen,
+  .result-screen,
+  .study-shell,
+  .study-page,
+  .revision-panel,
+  .revision-grid,
+  .revision-card,
+  .flashcard-panel,
+  .flashcard-grid,
+  .flashcard,
+  .results-list,
+  .result-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .revision-grid,
+  .flashcard-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .revision-card,
+  .flashcard,
+  .result-card {
+    padding: 14px;
+  }
+
+  .revision-card-head,
+  .result-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .revision-card-head em,
+  .status-badge {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .revision-card strong,
+  .revision-card p,
+  .revision-card summary,
+  .flashcard h3,
+  .flashcard-answer,
+  .result-card h3,
+  .review-line,
+  .explanation {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .revision-card div,
+  .flashcard-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .revision-card button,
+  .flashcard-actions button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .study-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+}

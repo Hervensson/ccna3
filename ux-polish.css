@@ -1,0 +1,274 @@
+/* Final UX polish layer: compact dashboard, cleaner cards, mobile-first rhythm. */
+.start-screen.polished-home {
+  width: min(1120px, calc(100% - 18px));
+  max-width: calc(100vw - 18px);
+  padding: clamp(14px, 3vw, 26px);
+  gap: 12px;
+  overflow-x: hidden;
+}
+
+.start-screen.polished-home .brand-row:first-child {
+  position: sticky;
+  top: 8px;
+  z-index: 8;
+  padding: 8px;
+  border: 1px solid rgba(147, 165, 189, 0.14);
+  border-radius: 8px;
+  background: rgba(7, 17, 31, 0.92);
+  backdrop-filter: blur(14px);
+  justify-content: flex-start;
+}
+
+.start-screen.polished-home h1 {
+  margin-top: 8px;
+  font-size: clamp(2rem, 5vw, 3.7rem);
+  line-height: 1;
+}
+
+.start-screen.polished-home .muted {
+  max-width: 850px;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.polish-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.polish-panel,
+.theme-menu,
+.flashcard-panel,
+.empty-progress {
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: rgba(7, 17, 31, 0.74);
+}
+
+.polish-main,
+.polish-mini,
+.theme-menu,
+.flashcard-panel,
+.empty-progress {
+  padding: 14px;
+}
+
+.polish-main span,
+.polish-side span,
+.theme-menu span,
+.flashcard-panel span,
+.empty-progress span {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.polish-main strong {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(1.35rem, 4vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.polish-main p,
+.polish-side p,
+.empty-progress p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.polish-side {
+  display: grid;
+  gap: 10px;
+}
+
+.start-screen.polished-home .home-intro {
+  display: none;
+}
+
+.start-screen.polished-home .start-actions {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 8px;
+  gap: 8px;
+}
+
+.start-screen.polished-home .start-actions > * {
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.start-screen.polished-home .start-actions .primary-action {
+  font-size: 0.98rem;
+}
+
+.theme-menu {
+  width: 100%;
+}
+
+.theme-menu-head,
+.flashcard-toolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.theme-menu h2,
+.flashcard-panel h2,
+.empty-progress h2 {
+  margin: 4px 0 0;
+  font-size: 1.1rem;
+}
+
+.theme-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.theme-buttons button,
+.flashcard-actions button {
+  min-height: 40px;
+  border-radius: 6px;
+  color: var(--text);
+  background: rgba(147, 165, 189, 0.09);
+  border: 1px solid var(--line);
+  font-weight: 900;
+}
+
+.theme-buttons button:hover,
+.flashcard-actions button:hover {
+  border-color: rgba(42, 212, 199, 0.65);
+}
+
+.empty-progress .primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  text-decoration: none;
+}
+
+.start-screen.polished-home.no-history .learning-dashboard .dashboard-card:not(.wide),
+.start-screen.polished-home.no-history #themeChartStart,
+.start-screen.polished-home.no-history #startHistory {
+  display: none;
+}
+
+.start-screen.polished-home.no-history .learning-dashboard {
+  grid-template-columns: 1fr;
+}
+
+.flashcard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.flashcard {
+  min-height: 190px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--line-soft);
+  background: rgba(14, 22, 36, 0.82);
+}
+
+.flashcard .pill {
+  width: fit-content;
+}
+
+.flashcard h3 {
+  margin: 12px 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.flashcard-answer {
+  display: none;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 6px;
+  color: var(--good);
+  border: 1px solid rgba(87, 214, 141, 0.28);
+  background: rgba(87, 214, 141, 0.08);
+  line-height: 1.45;
+}
+
+.flashcard.revealed .flashcard-answer {
+  display: block;
+}
+
+.flashcard-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.flashcard-actions button.known {
+  color: #061016;
+  background: var(--accent);
+}
+
+.home-bottom-action {
+  order: -2;
+}
+
+@media (max-width: 900px) {
+  .polish-hero,
+  .theme-buttons,
+  .flashcard-grid,
+  .start-screen.polished-home .start-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .start-screen.polished-home .start-actions .primary-action {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 660px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .start-screen.polished-home {
+    width: calc(100% - 10px);
+    max-width: calc(100vw - 10px);
+    margin: 5px auto;
+    padding: 12px;
+  }
+
+  .start-screen.polished-home .brand-row:first-child {
+    top: 5px;
+  }
+
+  .start-screen.polished-home h1 {
+    font-size: 2.25rem;
+  }
+
+  .start-screen.polished-home .muted {
+    font-size: 0.92rem;
+  }
+
+  .polish-hero,
+  .theme-buttons,
+  .flashcard-grid,
+  .start-screen.polished-home .start-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-menu-head,
+  .flashcard-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,35 @@
+.history-row .delete-history {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+}
+
+@media (max-width: 660px) {
+  .history-panel {
+    width: 100%;
+  }
+
+  .history-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 14px !important;
+  }
+
+  .history-row strong {
+    font-size: 1rem;
+  }
+
+  .history-row .delete-history {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 4px;
+    border-radius: 8px;
+    color: #ffd7df;
+    background: rgba(255, 122, 144, 0.14);
+    border: 1px solid rgba(255, 122, 144, 0.48);
+    font-size: 1rem;
+    font-weight: 900;
+  }
+}

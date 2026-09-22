@@ -115,9 +115,26 @@ window.CCNA_QUESTIONS = [
     "images": [
       "assets/image19.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "WAN / VPN"
+    "type": "matching",
+    "expectedChoices": 3,
+    "theme": "WAN / VPN",
+    "matching": {
+      "prompts": [
+        "couche d’accès",
+        "couche distribution",
+        "couche cœur de réseau"
+      ],
+      "answers": [
+        "Fournir un accès réseau à l’utilisateur / Constituer la périphérie du réseau",
+        "Implémenter une politique d’accès réseau / Définir les limites de routage de couche 3",
+        "Fournir une connectivité haut débit du réseau fédérateur / Constituer un associateur de tous les blocs de campus"
+      ],
+      "correct": [
+        "Fournir un accès réseau à l’utilisateur / Constituer la périphérie du réseau",
+        "Implémenter une politique d’accès réseau / Définir les limites de routage de couche 3",
+        "Fournir une connectivité haut débit du réseau fédérateur / Constituer un associateur de tous les blocs de campus"
+      ]
+    }
   },
   {
     "id": 7,
@@ -221,13 +238,8 @@ window.CCNA_QUESTIONS = [
   {
     "id": 12,
     "sourceNumber": 12,
-    "question": "Reportez-vous à l’illustration. Un administrateur a d’abord configuré une liste ACL étendue comme indiqué par la sortie de la commande show access-lists. L’administrateur a ensuite modifié cette liste d’accès en exécutant les commandes ci-dessous.",
+    "question": "Reportez-vous à l’illustration. Un administrateur a d’abord configuré une liste ACL étendue comme indiqué par la sortie de la commande show access-lists. L’administrateur a ensuite modifié cette liste d’accès en exécutant les commandes ci-dessous.\nQuelles deux conclusions peut-on tirer de cette nouvelle configuration ? (Choisissez deux.)",
     "options": [
-      "Router(config)# ip access-list extended 101",
-      "Router(config-ext-nacl)# no 20",
-      "Router(config-ext-nacl)# 5 permit tcp any any eq 22",
-      "Router(config-ext-nacl)# 20 deny udp any any",
-      "Quelles deux conclusions peut-on tirer de cette nouvelle configuration ? (Choisissez deux.)",
       "Les paquets TFTP seront autorisés.",
       "Les paquets Telnet seront autorisés.",
       "Les paquets ping seront autorisés.",
@@ -235,16 +247,15 @@ window.CCNA_QUESTIONS = [
       "Les paquets SSH seront autorisés."
     ],
     "correct": [
-      4,
-      7,
-      9
+      2,
+      4
     ],
     "explanation": "Après l’édition, la configuration finale est la suivante :\nRouter#_ afficher les listes d’accès\nListe d’accès IP étendue 101\n5 autoriser tcp tout tout eq ssh\n10 refuser tcp tout tout\n20 refuser udp tout\n30 permis icmp tout tout\nAinsi, seuls les paquets SSH et les paquets ICMP seront autorisés.",
     "images": [
       "assets/image43.png"
     ],
     "type": "multi",
-    "expectedChoices": 3,
+    "expectedChoices": 2,
     "theme": "ACL"
   },
   {
@@ -480,9 +491,32 @@ window.CCNA_QUESTIONS = [
     "images": [
       "assets/image25.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "ENSA général"
+    "type": "matching",
+    "expectedChoices": 5,
+    "theme": "ENSA général",
+    "matching": {
+      "prompts": [
+        "protocol",
+        "fragment",
+        "Uniform Resource Name (URN)",
+        "Uniform Resource Locator (URL)",
+        "Uniform Resource Identifier (URI)"
+      ],
+      "answers": [
+        "http",
+        "#Escape",
+        "www.buycarsfromus.com/2020models/ford/suv.html",
+        "http://www.buycarsfromus.com/2020models/ford/suv.html",
+        "http://www.buycarsfromus.com/2020models/ford/suv.html#Escape"
+      ],
+      "correct": [
+        "http",
+        "#Escape",
+        "www.buycarsfromus.com/2020models/ford/suv.html",
+        "http://www.buycarsfromus.com/2020models/ford/suv.html",
+        "http://www.buycarsfromus.com/2020models/ford/suv.html#Escape"
+      ]
+    }
   },
   {
     "id": 25,
@@ -529,26 +563,20 @@ window.CCNA_QUESTIONS = [
   {
     "id": 27,
     "sourceNumber": 27,
-    "question": "Examinez la liste de contrôle d’accès suivante, qui permet le transfert des fichiers de configuration du téléphone IP depuis un hôte spécifique vers un serveur TFTP :",
+    "question": "Examinez la liste de contrôle d’accès suivante, qui permet le transfert des fichiers de configuration du téléphone IP depuis un hôte spécifique vers un serveur TFTP :\nQuelle méthode permettrait à l’administrateur réseau de modifier la liste de contrôle d’accès et d’inclure des transferts FTP à partir de n’importe quelle adresse IP source ?",
     "options": [
-      "R1(config)# access-list 105 permit udp host 10.0.70.23 host 10.0.54.5 range 1024 5000",
-      "R1(config)# access-list 105 deny ip any any",
-      "R1(config)# interface gi0/0",
-      "R1(config-if)# ip access-group 105 out",
-      "Quelle méthode permettrait à l’administrateur réseau de modifier la liste de contrôle d’accès et d’inclure des transferts FTP à partir de n’importe quelle adresse IP source ?",
       "R1(config)# access-list 105 permit udp host 10.0.70.23 host 10.0.54.5 range 1024 5000\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 20\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 21\nR1(config)# access-list 105 deny ip any any",
       "R1(config)# interface gi0/0\nR1(config-if)# no ip access-group 105 out\nR1(config)# no access-list 105\nR1(config)# access-list 105 permit udp host 10.0.70.23 host 10.0.54.5 range 1024 5000\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 20\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 21\nR1(config)# access-list 105 deny ip any any\nR1(config)# interface gi0/0\nR1(config-if)# ip access-group 105 out",
       "R1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 20\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 21",
       "R1(config)# interface gi0/0\nR1(config-if)# no ip access-group 105 out\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 20\nR1(config)# access-list 105 permit tcp any host 10.0.54.5 eq 21\nR1(config)# interface gi0/0\nR1(config-if)# ip access-group 105 out"
     ],
     "correct": [
-      4,
-      5
+      0
     ],
     "explanation": "",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -801,9 +829,29 @@ window.CCNA_QUESTIONS = [
     "images": [
       "assets/image1.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "NAT"
+    "type": "matching",
+    "expectedChoices": 4,
+    "theme": "NAT",
+    "matching": {
+      "prompts": [
+        "DCE",
+        "CPE",
+        "point de démarcation",
+        "équipement terminal de traitement de données"
+      ],
+      "answers": [
+        "périphériques plaçant des données sur la boucle locale",
+        "appareils et câblage interne qui se trouvent à la périphérie du réseau de l’entreprise et se connectent à la liaison d’un opérateur",
+        "point établi dans un bâtiment ou un complexe pour séparer l’équipement du client et celui du fournisseur d’accès",
+        "périphériques du client qui transfèrent les données à partir du réseau d’un client ou d’un ordinateur hôte pour qu’elles soient transmises via le WAN"
+      ],
+      "correct": [
+        "périphériques plaçant des données sur la boucle locale",
+        "appareils et câblage interne qui se trouvent à la périphérie du réseau de l’entreprise et se connectent à la liaison d’un opérateur",
+        "point établi dans un bâtiment ou un complexe pour séparer l’équipement du client et celui du fournisseur d’accès",
+        "périphériques du client qui transfèrent les données à partir du réseau d’un client ou d’un ordinateur hôte pour qu’elles soient transmises via le WAN"
+      ]
+    }
   },
   {
     "id": 41,
@@ -908,21 +956,18 @@ window.CCNA_QUESTIONS = [
   {
     "id": 46,
     "sourceNumber": 46,
-    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:",
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:\nSi un paquet avec une adresse source 192.168.101.45, une adresse de destination 64.100.40.4 et un protocole 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé?",
     "options": [
-      "access-list 101 permit udp 192.168.100.0 0.0.2.255 64.100.40.0 0.0.15 eq telnet .",
-      "Si un paquet avec une adresse source 192.168.101.45, une adresse de destination 64.100.40.4 et un protocole 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé?",
       "refusé",
       "Autorisé"
     ],
     "correct": [
-      1,
-      2
+      0
     ],
     "explanation": "",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -1459,21 +1504,18 @@ window.CCNA_QUESTIONS = [
   {
     "id": 73,
     "sourceNumber": 73,
-    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:",
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:\nSi un paquet avec une adresse source 172.18.20.14, une adresse de destination 172.18.20.40 et un protocole 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé?",
     "options": [
-      "access-list 210 permit tcp 172.18.20.0 0.0.31 172.18.20.32 0.0.0.31 eq ftp .",
-      "Si un paquet avec une adresse source 172.18.20.14, une adresse de destination 172.18.20.40 et un protocole 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé?",
       "Autorisé",
       "refusé"
     ],
     "correct": [
-      1,
-      2
+      0
     ],
     "explanation": "",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -1489,9 +1531,29 @@ window.CCNA_QUESTIONS = [
       "assets/image37.jpeg",
       "assets/image3.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "WAN / VPN"
+    "type": "matching",
+    "expectedChoices": 4,
+    "theme": "WAN / VPN",
+    "matching": {
+      "prompts": [
+        "CPE",
+        "DCE",
+        "DTE",
+        "boucle locale"
+      ],
+      "answers": [
+        "périphériques et câblage intérieur situés à la périphérie de l’entreprise et connectés à une liaison opérateur",
+        "appareils qui fournissent une interface à laquelle les clients peuvent se connecter dans le cloud WAN",
+        "dispositifs clients qui transmettent les données d’un réseau client pour transmission sur le WAN",
+        "une connexion physique du client au fournisseur de services POP"
+      ],
+      "correct": [
+        "périphériques et câblage intérieur situés à la périphérie de l’entreprise et connectés à une liaison opérateur",
+        "appareils qui fournissent une interface à laquelle les clients peuvent se connecter dans le cloud WAN",
+        "dispositifs clients qui transmettent les données d’un réseau client pour transmission sur le WAN",
+        "une connexion physique du client au fournisseur de services POP"
+      ]
+    }
   },
   {
     "id": 75,
@@ -2054,9 +2116,29 @@ window.CCNA_QUESTIONS = [
     "images": [
       "assets/image16.jpeg"
     ],
-    "type": "study",
-    "expectedChoices": 1,
-    "theme": "NAT"
+    "type": "matching",
+    "expectedChoices": 4,
+    "theme": "NAT",
+    "matching": {
+      "prompts": [
+        "POST",
+        "OBTENIR",
+        "METTRE/PATCH",
+        "Delet"
+      ],
+      "answers": [
+        "Créer",
+        "Lis",
+        "Mettre à jour/Remplacer ? Modifier",
+        "Supprimer"
+      ],
+      "correct": [
+        "Créer",
+        "Lis",
+        "Mettre à jour/Remplacer ? Modifier",
+        "Supprimer"
+      ]
+    }
   },
   {
     "id": 103,
@@ -2181,26 +2263,22 @@ window.CCNA_QUESTIONS = [
   {
     "id": 109,
     "sourceNumber": 109,
-    "question": "Reportez-vous à l’illustration. Un administrateur configure l’ACL suivante afin d’empêcher les périphériques du sous-réseau 192.168.1.0 d’accéder au serveur à 10.1.1.5:",
+    "question": "Reportez-vous à l’illustration. Un administrateur configure l’ACL suivante afin d’empêcher les périphériques du sous-réseau 192.168.1.0 d’accéder au serveur à 10.1.1.5:\nOù l’administrateur doit-il placer cette liste ACL pour une utilisation optimale des ressources réseau ?",
     "options": [
-      "access-list 100 deny ip 192.168.1.0 0.0.255 host 10.1.1.5",
-      "access-list 100 autoriser ip any any",
-      "Où l’administrateur doit-il placer cette liste ACL pour une utilisation optimale des ressources réseau ?",
       "sortant sur le routeur B Fa0/0",
       "entrant sur le routeur A Fa0/0",
       "sortant sur le routeur A Fa0/1",
       "entrant sur le routeur B Fa0/1"
     ],
     "correct": [
-      2,
-      4
+      1
     ],
     "explanation": "",
     "images": [
       "assets/image4.png"
     ],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -2248,23 +2326,18 @@ window.CCNA_QUESTIONS = [
     "sourceNumber": 112,
     "question": "Examinez le résultat suivant pour une liste de contrôle qui a été appliquée à un routeur via la commande access-class in. Que peut conclure l’administrateur réseau du résultat indiqué ?",
     "options": [
-      "R1# <résultat omis>",
-      "Standard IP access list 2",
-      "10 permit 192.168.10.0, wildcard bits 0.0.0.255 (2 matches)",
-      "20 deny any (1 match)",
       "Le trafic des deux périphériques ne peut pas accéder à l’un des ports de routeur et a été acheminé en direction sortante vers un autre port de routeur.",
       "Deux périphériques connectés au routeur sont affectés à l’adresse IP 192.168.10.x.",
       "Le trafic de l’un des périphériques ne peut pas accéder à l’un des ports de routeur et a été acheminé en direction sortante vers un autre port de routeur.",
       "Deux périphériques ont pu utiliser SSH ou Telnet pour obtenir l’accès au routeur."
     ],
     "correct": [
-      0,
-      7
+      3
     ],
     "explanation": "La commande access-class est utilisée uniquement sur les ports VTY. Les ports VTY prennent en charge le trafic Telnet et/ou SSH. Le match permit ACE correspond au nombre de tentatives autorisées à l’aide des ports VTY. Le match deny ACE indique qu’un périphérique d’un réseau autre que 192.168.10.0 n’a pas été autorisé à accéder au routeur via les ports VTY.",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -2556,13 +2629,12 @@ window.CCNA_QUESTIONS = [
       "Lorsqu’un routeur désigné (DR) est choisi, tous les autres routeurs non désignés deviennent des routeurs DROTHER.",
       "Lorsque le DR est sélectionné, le nombre de contiguïtés passe de 6 à 3.",
       "Tous les routeurs DROTHER envoient des LSA au routeur désigné (DR) et au routeur désigné de secours (BDR) à l’adresse de multidiffusion 224.0.0.5.",
-      "Si le DR cesse de générer des paquets Hello, un BDR est choisi pour assumer le rôle de DR.",
-      "Sur les réseaux multi-accès OSPF, un DR est élu pour être le point de collecte et de distribution des LSA envoyés et reçus. Un BDR est également élu en cas d’échec du DR. Tous les autres routeurs non DR ou BDR deviennent DROTHER. Au lieu d’inonder les LSA vers tous les routeurs du réseau, les DROTHER n’envoient leurs LSA qu’au DR et au BDR à l’aide de l’adresse de multidiffusion 224.0.0.6. S’il n’y a pas d’élection DR/BDR, le nombre d’adjacences requises est n(n-1)/2 = > 4(4-1)/2 = 6. Avec l’élection, ce nombre est réduit à 3."
+      "Si le DR cesse de générer des paquets Hello, un BDR est choisi pour assumer le rôle de DR."
     ],
     "correct": [
       1
     ],
-    "explanation": "",
+    "explanation": "Sur les réseaux multi-accès OSPF, un DR est élu pour être le point de collecte et de distribution des LSA envoyés et reçus. Un BDR est également élu en cas d’échec du DR. Tous les autres routeurs non DR ou BDR deviennent DROTHER. Au lieu d’inonder les LSA vers tous les routeurs du réseau, les DROTHER n’envoient leurs LSA qu’au DR et au BDR à l’aide de l’adresse de multidiffusion 224.0.0.6. S’il n’y a pas d’élection DR/BDR, le nombre d’adjacences requises est n(n-1)/2 = > 4(4-1)/2 = 6. Avec l’élection, ce nombre est réduit à 3.",
     "images": [
       "assets/image31.png"
     ],
@@ -2689,21 +2761,18 @@ window.CCNA_QUESTIONS = [
   {
     "id": 134,
     "sourceNumber": 134,
-    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:",
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une entrée unique:\nSi un paquet avec une adresse source 192.168.10.45, une adresse de destination 10.10.3.27 et un protocole de 80 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
     "options": [
-      "access-list 100 permit tcp 192.168.10.0 0.0.255 any eq www.",
-      "Si un paquet avec une adresse source 192.168.10.45, une adresse de destination 10.10.3.27 et un protocole de 80 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
       "Autorisé",
       "refusé"
     ],
     "correct": [
-      1,
-      2
+      0
     ],
     "explanation": "",
     "images": [],
-    "type": "multi",
-    "expectedChoices": 2,
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "ACL"
   },
   {
@@ -2715,55 +2784,1501 @@ window.CCNA_QUESTIONS = [
       "ip nat outside",
       "ip nat inside source list 24 interface serial 0/1/0 overload",
       "ip nat pool POOL-STAT 64.100.14.17 64.100.14.30 netmask 255.255.255.240",
-      "==========================================",
-      "_9. Un administrateur réseau a été chargé de créer un plan de reprise après sinistre. Dans le cadre de ce plan, l’administrateur recherche un site de sauvegarde pour toutes les données sur les serveurs de l’entreprise. Quel service ou technologie répondrait à cette exigence ?",
+      "=========================================="
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 136,
+    "sourceNumber": 9,
+    "question": "Un administrateur réseau a été chargé de créer un plan de reprise après sinistre. Dans le cadre de ce plan, l’administrateur recherche un site de sauvegarde pour toutes les données sur les serveurs de l’entreprise. Quel service ou technologie répondrait à cette exigence ?",
+    "options": [
       "centre de données",
       "virtualisation",
       "serveurs dédiés",
-      "réseau défini par logiciel",
-      "_13. Un client a besoin d’une connexion WAN de zone métropolitaine qui fournit une bande passante dédiée à haut débit entre deux sites. Quel type de connexion WAN répondrait le mieux à ce besoin ?",
+      "réseau défini par logiciel"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 137,
+    "sourceNumber": 13,
+    "question": "Un client a besoin d’une connexion WAN de zone métropolitaine qui fournit une bande passante dédiée à haut débit entre deux sites. Quel type de connexion WAN répondrait le mieux à ce besoin ?",
+    "options": [
       "réseau à commutation de paquets",
       "réseau étendu Ethernet",
       "réseau à commutation de circuits",
-      "MPLS",
-      "_14. Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des débogueurs ?",
+      "MPLS"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 138,
+    "sourceNumber": 14,
+    "question": "Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des débogueurs ?",
+    "options": [
       "pour détecter les outils installés dans les fichiers et les répertoires qui permettent aux pirates d’accéder et de contrôler à distance un ordinateur ou un réseau",
       "pour désosser les fichiers binaires lors de l’écriture d’exploits et de l’analyse de logiciels malveillants",
       "pour obtenir des systèmes d’exploitation spécialement conçus et préchargés avec des outils optimisés pour le piratage",
-      "pour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau",
-      "_19. Lors de la configuration d’un réseau de petite entreprise, l’administrateur réseau décide d’attribuer dynamiquement des adresses IP privées aux postes de travail et aux appareils mobiles. Quelle fonctionnalité doit être activée sur le routeur de l’entreprise pour que les appareils de bureau accèdent à Internet ?",
+      "pour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 139,
+    "sourceNumber": 19,
+    "question": "Lors de la configuration d’un réseau de petite entreprise, l’administrateur réseau décide d’attribuer dynamiquement des adresses IP privées aux postes de travail et aux appareils mobiles. Quelle fonctionnalité doit être activée sur le routeur de l’entreprise pour que les appareils de bureau accèdent à Internet ?",
+    "options": [
       "UPnP",
       "Filtrage MAC",
       "NAT",
       "Qualité de service"
     ],
     "correct": [
-      3,
-      5,
-      6,
-      10,
-      12,
-      15,
-      17,
-      20,
-      23
+      2
     ],
-    "explanation": "La traduction d’adresses réseau (NAT) est le processus utilisé pour convertir des adresses privées en adresses routables sur Internet qui permettent aux appareils de bureau d’accéder à Internet.\n_44. Un attaquant redirige le trafic vers une fausse passerelle par défaut pour tenter d’intercepter le trafic de données d’un réseau commuté. Quel type d’attaque pourrait y parvenir ?\nInondation TCP SYN\nTunnelisation DNS\nUsurpation DHCP\nEmpoisonnement du cache ARP\ndans les attaques d’usurpation DHCP, un attaquant configure un faux serveur DHCP sur le réseau pour émettre des adresses DHCP aux clients dans le but de forcer les clients à utiliser une fausse passerelle par défaut, et autres faux services. La surveillance DHCP est une fonctionnalité du commutateur Cisco qui peut atténuer les attaques DHCP. La privation d’adresses MAC et l’espionnage d’adresses MAC ne sont pas des attaques de sécurité reconnues. L’usurpation d’adresse MAC est une menace pour la sécurité du réseau.\n_46. Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des renifleurs de paquets ?\npour détecter les outils installés dans les fichiers et les répertoires qui permettent aux pirates d’accéder et de contrôler à distance un ordinateur ou un réseau\npour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau\npour sonder et tester la robustesse d’un pare-feu en utilisant des paquets falsifiés spécialement créés\npour capturer et analyser les paquets dans les LAN Ethernet traditionnels ou les WLAN\n_53. Quels sont les deux scénarios qui entraîneraient une incompatibilité duplex ? (Choisissez deux réponses.)\nconnecter un appareil avec négociation automatique à un autre qui est manuellement réglé sur full-duplex\ndémarrage et arrêt d’une interface de routeur pendant une opération normale\nconnecter un appareil avec une interface fonctionnant à 100 Mbps à un autre avec une interface fonctionnant à 1 000 Mbps\nconfiguration incorrecte du routage dynamique\nrégler manuellement les deux appareils connectés sur différents modes duplex\n_57. Quels types de ressources sont nécessaires pour un hyperviseur de type 1 ?\nun VLAN dédié\nune console de gestion\nun système d’exploitation hôte\n_69. Quels sont les deux énoncés décrivant l’utilisation d’algorithmes asymétriques ? (Choisissez deux réponses.)\nLes clés publiques et privées peuvent être utilisées de manière interchangeable.\nSi une clé publique est utilisée pour chiffrer les données, une clé publique doit être utilisée pour déchiffrer les données.\nSi une clé privée est utilisée pour chiffrer les données, une clé publique doit être utilisée pour déchiffrer les données.\nSi une clé publique est utilisée pour chiffrer les données, une clé privée doit être utilisée pour déchiffrer les données.\nSi une clé privée est utilisée pour chiffrer les données, une clé privée doit être utilisée pour déchiffrer les données.\nLes algorithmes asymétriques utilisent deux clés : une clé publique et une clé privée. Les deux clés sont capables du processus de chiffrement, mais la clé correspondante complémentaire est requise pour le déchiffrement. Si une clé publique chiffre les données, la clé privée correspondante déchiffre les données. L’inverse est également vrai. Si une clé privée chiffre les données, la clé publique correspondante déchiffre les données.\n_70. Reportez-vous à l’illustration. Un administrateur réseau a déployé QoS et a configuré le réseau pour marquer le trafic sur les téléphones VoIP ainsi que sur les commutateurs de couche 2 et de couche 3. Où le marquage initial doit-il avoir lieu pour établir la limite de confiance ?\nFrontière de confiance 4\nFrontière de confiance 3\nFrontière de confiance 1\nFrontière de confiance 2\nLe trafic doit être classé et marqué aussi près que possible de sa source. La limite de confiance identifie à quel périphérique le trafic marqué doit être approuvé. Le trafic marqué sur les téléphones VoIP serait considéré comme fiable lorsqu’il se déplace vers le réseau de l’entreprise.\n_71. Quels sont les deux avantages de l’extension de la connectivité de la couche d’accès aux utilisateurs via un support sans fil ? (Choisissez deux réponses.)\ncoûts réduits\ndiminution du nombre de points de défaillance critiques\nflexibilité accrue\naugmentation de la disponibilité de la bande passante\nplus d’options de gestion du réseau\n_74. Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\nCopy\naccess-list 101 permit tcp 10.1.1.0 0.0.0.255 host 192.31.7.45 eq dns .\n_Si un paquet avec une adresse source de 10.1.1.201, une adresse de destination de 192.31.7.45 et un protocole de 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nautorisé\nrefusé\n_76. Reportez-vous à l’illustration. Quel format de données est utilisé pour représenter les données pour les applications d’automatisation de réseau ?\nXML\nYAML\nHTML\nJSON\nLes formats de données courants utilisés dans de nombreuses applications, y compris l’automatisation du réseau et la programmabilité, sont les suivants :\n_JavaScript Object Notation (JSON) : dans JSON, les données connues sous le nom d’objet sont une ou plusieurs paires clé/valeur entre accolades { }. Les clés doivent être des chaînes entre guillemets doubles » « . Les clés et les valeurs sont séparées par deux-points.\n_Langage de balisage extensible (XML) : en XML, les données sont incluses dans un ensemble de balises associées <tag>data</tag>.\n_YAML n’est pas un langage de balisage (YAML) : dans YAML, les données connues sous le nom d’objet sont constituées d’une ou de plusieurs paires clé/valeur. Les paires clé-valeur sont séparées par deux-points sans utiliser de guillemets. YAML utilise l’indentation pour définir sa structure, sans utiliser de crochets ni de virgules.\n_77. Quelle étape QoS doit avoir lieu avant que les paquets puissent être marqués ?\nclassification\nmise en forme\nfaire la queue\npolice\n_79. Une entreprise doit interconnecter plusieurs succursales dans une zone métropolitaine. L’ingénieur réseau recherche une solution qui fournit un trafic convergé à haut débit, y compris la voix, la vidéo et les données sur la même infrastructure réseau. La société souhaite également une intégration facile à son infrastructure LAN existante dans ses bureaux. Quelle technologie recommander ?\nFrame Relay\nréseau étendu Ethernet\nVSAT\nRNIS\n_81. Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\nCopy\naccess-list 101 permit tcp 10.1.1.0 0.0.0.255 host 10.1.3.8 eq dns .\n_Si un paquet avec une adresse source de 10.1.3.8, une adresse de destination de 10.10.3.8 et un protocole de 53 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nrefusé\nautorisé\n_86. Reportez-vous à l’illustration. De nombreux employés perdent le temps de l’entreprise à accéder aux médias sociaux sur leurs ordinateurs de travail. L’entreprise veut arrêter cet accès. Quel est le meilleur type et emplacement ACL à utiliser dans cette situation ?\nLCA étendue sortante sur l’interface WAN R2 vers Internet\nACL standard sortant sur l’interface WAN R2 vers Internet\nACL standard sortant sur R2 S0/0/0\nLCA étendues entrantes sur R1 G0/0 et G0/1\n_90. Dans quel état OSPF l’élection DR/BDR est-elle effectuée ?\nExStart\nInit\nBidirectionnel\nÉchange\n_93. Reportez-vous à l’illustration. Si le commutateur redémarre et que tous les routeurs doivent rétablir les contiguïtés OSPF, quels routeurs deviendront les nouveaux DR et BDR ?\nLe routeur R3 deviendra le DR et le routeur R1 deviendra le BDR.\nLe routeur R4 deviendra le DR et le routeur R3 deviendra le BDR.\nLe routeur R1 deviendra le DR et le routeur R2 deviendra le BDR.\nLe routeur R3 deviendra le DR et le routeur R2 deviendra le BDR.\nles élections OSPF d’un DR sont basées sur les éléments suivants par ordre de priorité :\npriorité la plus élevée de 1 à 255 (0 = jamais un DR)\nID de routeur le plus élevé\nl’adresse IP la plus élevée d’un bouclage ou d’une interface active en l’absence d’ID de routeur configuré manuellement. Les adresses IP de bouclage ont une priorité plus élevée que les autres interfaces.\nDans ce cas, les routeurs R3 et R1 ont la priorité de routeur la plus élevée. Entre les deux, R3 a l’ID de routeur le plus élevé. Par conséquent, R3 deviendra le DR et R1 deviendra le BDR.\n_94. Quel type de serveur serait utilisé pour conserver un enregistrement historique des messages provenant des périphériques réseau surveillés ?\nDNS\nimprimer\nDHCP\nsyslog\nauthentification\n_95. Lorsque QoS est implémenté dans un réseau convergé, quels sont les deux facteurs qui peuvent être contrôlés pour améliorer les performances du réseau pour le trafic en temps réel ? (Choisissez deux réponses.)\nadressage des paquets\ndélai\njitter\nroutage de paquets\nvitesse de liaison\nLe délai est la latence entre un appareil émetteur et récepteur. La gigue est la variation du retard des paquets reçus. Le délai et la gigue doivent être contrôlés afin de prendre en charge le trafic voix et vidéo en temps réel.\n_97. Quel protocole envoie des annonces périodiques entre les appareils Cisco connectés afin de connaître le nom de l’appareil, la version de l’IOS, ainsi que le nombre et le type d’interfaces ?\nCDP\nSNMP\nNTP\nLLDP\n_102. Quel type de VPN permet la multidiffusion et la diffusiontrafic rapide via un VPN de site à site sécurisé ?\nVPN multipoint dynamique\nVPN SSL\nInterface de tunnel virtuel IPsec\nGRE sur IPsec\n_107. Comment la virtualisation facilite-t-elle la reprise après sinistre dans un centre de données ?\nLe matériel n’a pas besoin d’être identique.\n(Autre cas) Le matériel sur le site de récupération ne doit pas nécessairement être identique à l’équipement de production.\nL’alimentation est toujours fournie.\nMoins d’énergie est consommée.\nLe provisionnement du serveur est plus rapide.\nLa reprise après sinistre est la manière dont une entreprise s’y prend pour accéder aux applications, aux données et au matériel susceptibles d’être affectés lors d’un sinistre. La virtualisation offre une indépendance matérielle, ce qui signifie que le site de reprise après sinistre n’a pas besoin d’avoir exactement l’équipement que l’équipement en production. Le provisionnement de serveur est pertinent lorsqu’un serveur est créé pour la première fois. Bien que les centres de données disposent de générateurs de secours, l’ensemble du centre de données est conçu pour la reprise après sinistre. Un centre de données particulier ne pourrait jamais garantir que le centre de données lui-même ne serait jamais sans électricité.\n_112. Quel protocole utilise des agents résidant sur des appareils gérés pour collecter et stocker des informations sur l’appareil et son fonctionnement ?\nSYSLOG\nTFTP\nCBWFQ\nSNMP\n_113. Un administrateur configure l’OSPF à zone unique sur un routeur. L’un des réseaux qui doit être annoncé est 10.27.27.0 255.255.255.0. Quel masque générique l’administrateur utiliserait-il dans la déclaration de réseau OSPF ?\n0.0.0.63\n0.0.0.255\n0.0.0.31\n0.0.0.15\n_114. Quand un routeur compatible OSPF passera-t-il de l’état Down à l’état Init ?\nlorsqu’une interface compatible OSPF devient active\ndès que le routeur démarre\nlorsque le routeur reçoit un paquet Hello d’un routeur voisin\ndès que le processus d’élection DR/BDR est terminé\n_115. Quel type de trafic est décrit comme ayant un volume élevé de données par paquet ?\ndonnées\nvidéo\nvoix\n_122. Une entreprise a consolidé plusieurs serveurs et recherche un programme ou un firmware pour créer et contrôler des machines virtuelles qui ont accès à tout le matériel des serveurs consolidés. Quel service ou technologie répondrait à cette exigence ?\nACI Cisco\nréseau défini par logiciel\nHyperviseur de type 1\nAPIC-EM\n_123. Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour identifier les adresses locales internes à traduire ?\nip nat inside source list 24 interface serial 0/1/0 surcharge\nip nat inside source list 14 pool POOL-STAT surcharge\nliste d’accès 10 permis 172.19.89.0 0.0.0.255\nip nat dans la liste des sources ACCTNG pool POOL-STAT\n_125. Reportez-vous à l’illustration. Un administrateur essaie de sauvegarder la configuration en cours d’exécution du routeur sur une clé USB et entre la commande copy usbflash0:/R1-config running-config sur la ligne de commande du routeur. Après avoir retiré la clé USB et l’avoir connectée à un PC, l’administrateur découvre que la configuration en cours n’a pas été correctement sauvegardée dans le fichier de configuration R1. Quel est le problème ?\nLe fichier existe déjà sur la clé USB et ne peut pas être écrasé.\nLe disque n’a pas été correctement formaté avec le système de fichiers FAT16.\nIl n’y a plus d’espace sur la clé USB.\nLa clé USB n’est pas reconnue par le routeur.\nLa commande utilisée par l’administrateur était incorrecte.\n_126. Quels sont les trois types de VPN qui sont des exemples de VPN site à site gérés par l’entreprise ? (Choisissez trois réponses.)\nVPN MPLS de couche 3\nVPN IPsec\nVPN multipoint dynamique Cisco\nGRE sur VPN IPsec\nVPN SSL sans client\nVPN IPsec basé sur le client\n_128. Dans un réseau OSPF, quelles sont les deux déclarations décrivant la base de données d’état des liens (LSDB) ? (Choisissez deux réponses.)\nIl peut être visualisé à l’aide de la commande show ip ospf database.\nUne table de voisinage est créée sur la base de la LSDB.\nIl contient une liste des meilleurs itinéraires vers un réseau particulier.\nIl contient une liste de tous les routeurs voisins avec lesquels un routeur a établi une communication bidirectionnelle.\nTous les routeurs d’une zone ont une base de données d’état de liens identique.\n_129. Dans un réseau OSPF, quelle structure OSPF est utilisée pour créer la table des voisins sur un routeur ?\nbase de données de contiguïté\nbase de données d’état des liens\ntable de routage\nbase de données de transfert\n_130. Quel protocole est utilisé dans un système composé de trois éléments : un gestionnaire, des agents et une base de données d’informations ?\nMPLS\nSYSLOG\nSNMP\nTFTP\n_131. Quel type de trafic est décrit comme n’étant pas résilient aux pertes ?\ndonnées\nvidéo\nvoix\nle trafic vidéo a tendance à être imprévisible, incohérent et en rafale par rapport au trafic vocal. Par rapport à la voix, la vidéo est moins résistante aux pertes et contient un plus grand volume de données par paquet.\n_135. Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\nCopy\naccess-list 101 permit udp 192.168.100.32 0.0.0.7 host 198.133.219.76 eq telnet .\n_Si un paquet avec une adresse source de 198.133.219.100, une adresse de destination de 198.133.219.170 et un protocole de 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nrefusé\nautorisé\n_140. Reportez-vous à l’illustration. Si le commutateur redémarre et que tous les routeurs doivent rétablir les contiguïtés OSPF, quels routeurs deviendront les nouveaux DR et BDR ?\nEnterprise Networking, Security, and Automation ( Version 7.00) – Examen final ENSA\nLe routeur R2 deviendra le DR et le routeur R4 deviendra le BDR.\nLe routeur R1 deviendra le DR et le routeur R3 deviendra le BDR.\nLe routeur R4 deviendra le DR et le routeur R3 deviendra le BDR.\nLe routeur R3 deviendra le DR et le routeur R2 deviendra le BDR.\n_145. Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour afficher toutes les traductions statiques qui ont été configurées ?\nafficher les traductions ip nat\nafficher les traductions ip pat\nafficher le cache IP\nafficher la configuration en cours\n_147. Quel type de VPN est le choix préféré pour la prise en charge et la facilité de déploiement pour l’accès à distance ?\nVPN SSL\nGRE sur IPsec\nVPN multipoint dynamique\nInterface de tunnel virtuel IPsec\n_153. Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\nCopy\naccess-list 100 permit tcp 192.168.10.0 0.0.0.255 172.17.200.0 0.0.0.255 eq www .\n_Si un paquet avec une adresse source de 192.168.10.244, une adresse de destination de 172.17.200.56 et un protocole de 80 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nrefusé\nautorisé\n_154. Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des applications telles que Nmap, SuperScan et Angry IP Scanner ?\npour détecter les outils installés dans les fichiers et les répertoires qui permettent aux pirates d’accéder et de contrôler à distance un ordinateur ou un réseau\npour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau\npour désosser les fichiers binaires lors de l’écriture d’exploits et de l’analyse de logiciels malveillants\npour sonder les périphériques réseau, les serveurs et les hôtes à la recherche de ports TCP ou UDP ouverts\n_155. Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour afficher les traductions PAT dynamiques créées par le trafic ?\nafficher les traductions ip pat\nafficher le cache IP\nafficher la configuration en cours\nafficher les traductions ip nat\n_156. Un administrateur configure l’OSPF à zone unique sur un routeur. L’un des réseaux qui doit être annoncé est 172.16.91.0 255.255.255.192. Quel masque générique l’administrateur utiliserait-il dans la déclaration de réseau OSPF ?\n0.0.31.255\n0.0.0.63\n0.0.15.255\n0.0.7.255\n_157. Quel type de trafic est décrit comme nécessitant une latence inférieure à 400 ms ?\nvidéo\ndonnées\nvoix\n_160. Reportez-vous à l’illustration. La société a décidé qu’aucun trafic provenant de tout autre réseau existant ou futur ne peut être transmis au réseau de Recherche et Développement. De plus, aucun trafic provenant du réseau de Recherche et Développement ne peut être transmis à d’autres réseaux existants ou futurs de l’entreprise. L’administrateur réseau a décidé que les listes de contrôle d’accès étendues sont mieux adaptées à ces exigences. Sur la base des informations fournies, que va faire l’administrateur réseau ?\nUne ACL sera placée sur l’interface R1 Gi0/0 et une ACL sera placée sur l’interface R2 Gi0/0.\nSeule une ACL numérotée fonctionnera dans cette situation.\nUne ACL sera placée sur l’interface R2 Gi0/0 et une ACL sera placée sur l’interface R2 S0/0/0.\nDeux ACL (une dans chaque direction) seront placées sur l’interface R2 Gi0/0.\n_161. Quel protocole utilise des nombres de strates plus petits pour indiquer que le serveur est plus proche de la source horaire autorisée que des nombres de strates plus grands ?\nTFTP\nSYSLOG\nNTP\nMPLS\n_163. Mettez en correspondance la méthode HTTP avec l’opération RESTful.\n\n_165. Quel type de trafic est décrit comme ayant tendance à être imprévisible, incohérent et saccadé ?\nvidéo\nvoix\ndonnées\n_167. Quel type de trafic est décrit comme composé de trafic nécessitant une priorité plus élevée s’il est interactif ?\nvoix\ndonnées\nvidéo\n_168. Quel type de VPN offre une option flexible pour connecter un site central à des sites de succursale ?\nInterface de tunnel virtuel IPsec\nVPN MPLS\nVPN multipoint dynamique\nGRE sur IPsec\n_176. Un ingénieur réseau a remarqué que certaines entrées de route réseau attendues ne s’affichent pas dans la table de routage. Quelles sont les deux commandes qui fourniront des informations supplémentaires sur l’état des adjacences de routeur, les intervalles de minuterie et l’ID de zone ? (Choisissez deux réponses.)\nafficher les protocoles IP\nafficher ip ospf voisin\nafficher la configuration en cours\nafficher l’interface ip ospf\nafficher ip route ospf\nLa commande show ip ospf interface affichera les informations de la table de routage qui sont déjà connues. Les commandes show running-configuration et show ip protocols afficheront les aspects de la configuration OSPF sur le routeur mais n’afficheront pas les détails de l’état de contiguïté ni les détails de l’intervalle de temporisation.\n_177. Quel type de VPN implique le transfert du trafic sur le backbone via l’utilisation d’étiquettes réparties entre les routeurs principaux ?\nVPN MPLS\nGRE sur IPsec\nInterface de tunnel virtuel IPsec\nVPN multipoint dynamique\n_179. Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des systèmes d’exploitation de piratage ?\npour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau\npour obtenir des systèmes d’exploitation spécialement conçus et préchargés avec des outils optimisés pour le piratage\npour encoder les données, à l’aide de schémas algorithmiques, afin d’empêcher tout accès non autorisé aux données chiffrées\npour désosser les fichiers binaires lors de l’écriture d’exploits et de l’analyse de logiciels malveillants\n_180. Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour identifier une interface comme faisant partie du réseau mondial externe ?\nip tape à l’intérieur\nliste d’accès 10 permis 172.19.89.0 0.0.0.255\nip nat à l’intérieur\nip nat extérieur\n_181. Pour éviter d’acheter du nouveau matériel, une entreprise souhaite tirer parti des ressources système inactives et consolider le nombre de serveurs tout en autorisant plusieurs systèmes d’exploitation sur une seule plate-forme matérielle. Quel service ou technologie répondrait à cette exigence ?\ncentre de données\nservices cloud\nvirtualisation\nserveurs dédiés\n_Expliquez : La virtualisation des serveurs tire parti des ressources inactives et consolide le nombre de serveurs requis. Cela permet également à plusieurs systèmes d’exploitation d’exister sur une seule plate-forme matérielle.\n_182. Quel type de VPN achemine les paquets via des interfaces de tunnel virtuel pour le chiffrement et le transfert ?\nVPN MPLS\nInterface de tunnel virtuel IPsec\nVPN multipoint dynamique\nGRE sur IPsec\n_184. Quel type de trafic est décrit comme utilisant TCP ou UDP en fonction du besoin de récupération d’erreur ?\nvidéo\nvoix\ndonnées\n_188. Une ACL est appliquée en entrée sur l’interface du routeur. L’ACL se compose d’une seule entrée :\nCopy\naccess-list 210 permit tcp 172.18.20.0 0.0.0.47 any eq ftp\n_Si un paquet avec une adresse source de 172.18.20.40, une adresse de destination de 10.33.19.2 et un protocole de 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nautorisé\nrefusé\n_189. Quel type de trafic est décrit comme consistant en un trafic dont la priorité est inférieure s’il n’est pas stratégique ?\nvidéo\ndonnées\nvoix\n_192. Quel protocole permet au gestionnaire d’interroger les agents pour accéder aux informations de la MIB de l’agent ?\nCBWFQ\nSYSLOG\nTFTP\nSNMP\n_195. Quel terme décrit l’ajout d’une valeur à l’en-tête du paquet, aussi proche que possible de la source, afin que le paquet corresponde à une politique définie ?\npolice\nmarquage routier\ndétection précoce aléatoire pondérée (WRED)\nmise en forme du trafic\nchute de la queue\n_196. Quels sont les trois facteurs liés au trafic qui influenceraient la sélection d’un type de lien WAN particulier ? (Choisissez trois réponses.)\ncoût du lien\nquantité de trafic\ndistance entre les sites\nfiabilité\nbesoins de sécurité\ntype de trafic\nLes facteurs liés au trafic qui influencent la sélection d’un type de lien WAN particulier incluent le type de trafic, la quantité de trafic, les exigences de qualité et les exigences de sécurité. Les exigences de qualité incluent la garantie que le trafic qui ne peut pas tolérer les retards bénéficie d’un traitement prioritaire, ainsi que le trafic transactionnel commercial important.\n_197. Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour lier les adresses locales internes au pool d’adresses disponibles pour la traduction PAT ?\nip nat inside source list ACCTNG pool POOL-STAT\ndélai de traduction ip nat 36000\nip nat à l’intérieur de la liste source 14 pool POOL-STAT surcharge\nip nat à l’intérieur de la source statique 172.19.89.13 198.133.219.65\n_198. Quel protocole est un protocole de découverte de couche 2 indépendant du fournisseur qui doit être configuré séparément pour transmettre et recevoir des paquets d’informations ?\nSNMP\nMPLS\nLLDP\nNTP\n_199. Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\naccess-list 210 permit tcp 172.18.20.0 0.0.0.31 172.18.20.32 0.0.0.31 eq ftp .\n_Si un paquet avec une adresse source de 172.18.20.55, une adresse de destination de 172.18.20.3 et un protocole de 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?\nautorisé\nrefusé\n_200. Reportez-vous à l’illustration. La politique de l’entreprise exige que l’accès au réseau de serveurs soit limité aux seuls employés internes. Quel est le meilleur type et emplacement ACL à utiliser dans cette situation ?\nLa politique de l’entreprise exige que l’accès au réseau de serveurs soit limité aux employés internes uniquement. Quel est le meilleur type et emplacement ACL à utiliser dans cette situation\nLCA étendue sortante sur R2 S0/0/1\nACL standard sortant sur R2 S0/0/0\nACL standard entrant sur l’interface WAN R2 se connectant à Internet\nLCA étendue entrante sur R2 S0/0/0\n_201. Un technicien travaille sur un commutateur de couche 2 et remarque qu’un message %CDP-4-DUPLEX_MISMATCH continue d’apparaître pour le port G0/5. Quelle commande le technicien doit-il émettre sur le commutateur pour lancer le processus de dépannage ?\nafficher les voisins cdp\nshow ip interface brief\nafficher l’interface g0/5\nafficher le cdp\n_202. Quelle ressource virtuelle serait installée sur un serveur réseau pour fournir un accès direct aux ressources matérielles ?\nVMware Fusion\nune console de gestion\nun VLAN dédié\nun hyperviseur de type 1\nHyperviseurs de type 1, l’hyperviseur est installé directement sur le serveur ou le matériel réseau. Ensuite, des instances d’un système d’exploitation sont installées sur l’hyperviseur, comme illustré dans la figure. Les hyperviseurs de type 1 ont un accès direct aux ressources matérielles. Par conséquent, elles sont plus efficaces que les architectures hébergées. Les hyperviseurs de type 1 améliorent l’évolutivité, les performances et la robustesse.\n_203. Reportez-vous à l’illustration. Un administrateur réseau a configuré une ACL standard pour autoriser uniquement les deux réseaux LAN connectés à R1 à accéder au réseau qui se connecte à l’interface R2 G0/1. Lorsque vous suivez les bonnes pratiques, à quel endroit l’ACL standard doit-elle être appliquée ?\nRéseaux d’entreprise, sécurité et automatisation (version 7.00) – Examen final ENSA[/caption ]\nR2 G0/1 entrant\nR2 S0/0/1 sortant\nR1 S0/0/0 sortant\nR2 G0/1 sortant\nR2 G0/0 sortant\n_204. Quelle base de données OSPF est identique sur tous les routeurs convergés au sein de la même zone OSPF ?\nvoisin\ntransfert\nétat du lien\nadjacence\nQuelle que soit la zone OSPF dans laquelle un routeur réside, la base de données de contiguïté, la table de routage et la base de données de transfert sont uniques pour chaque routeur. La base de données d’état des liens répertorie les informations sur tous les autres routeurs d’une zone et est identique sur tous les routeurs OSPF participant à cette zone.\n_205. Quelles sont les deux fonctionnalités à prendre en compte lors de la création d’une ACL nommée ? (Choisissez deux réponses.)\nUtilisez des caractères alphanumériques si nécessaire.\nUtilisez des caractères spéciaux, tels que ! ou * pour montrer l’importance de l’ACL.\nModifier l’ACL à l’aide d’un éditeur de texte.\nSoyez descriptif lors de la création du nom ACL.\nUtilisez un espace pour faciliter la lecture afin de séparer le nom de la description\nCe qui suit résume les règles à suivre pour les ACL nommées :\nAttribuez un nom pour identifier l’objectif de l’ACL.\nLes noms peuvent contenir des caractères alphanumériques.\nLes noms ne peuvent pas contenir d’espaces ni de ponctuation.\nC’estsuggéré que le nom soit écrit en MAJUSCULES.\nLes entrées peuvent être ajoutées ou supprimées dans l’ACL.\n_206. Mettez en correspondance la méthode API RESTful à la fonction CRUD.\nMettez en correspondance la méthode API RESTful à la fonction CRUD.\n_207. Quel type de trafic est décrit comme nécessitant au moins 384 Kbit/s de bande passante ?\nvoix\ndonnées\nvidéo\n_208. Quelle étape du processus de routage à état des liens est décrite par un routeur insérant les meilleurs chemins dans la table de routage ?\ndéclarer un voisin inaccessible\nexécuter l’algorithme SPF\nchemins d’équilibrage de charge à coût égal\nchoisir le meilleur itinéraire\n_209. Toute entreprise a décidé de réduire son empreinte environnementale en réduisant les coûts énergétiques, en déménageant dans une installation plus petite et en favorisant le télétravail. Quel service ou technologie répondrait à cette exigence ?\ncentre de données\nvirtualisation\nservices cloud\nserveurs dédiés\n_210. Quelle technique QoS lisse le débit de sortie des paquets ?\npolice\nmise en forme\ndétection précoce aléatoire pondérée\nServices intégrés (IntServ)\nmarquage\n_212. Un technicien réseau configure SNMPv3 et a défini un niveau de sécurité SNMPv3 authPriv. Quelle est la fonctionnalité d’utilisation de ce niveau ?\nauthentifie un paquet en utilisant uniquement l’algorithme SHA\nauthentifie un paquet par une correspondance de chaîne du nom d’utilisateur ou de la chaîne de communauté\nauthentifie un paquet en utilisant soit la méthode HMAC avec MD5, soit la méthode SHA\nauthentifie un paquet en utilisant les algorithmes HMAC MD5 ou HMAC SHA et un nom d’utilisateur",
+    "explanation": "La traduction d’adresses réseau (NAT) est le processus utilisé pour convertir des adresses privées en adresses routables sur Internet qui permettent aux appareils de bureau d’accéder à Internet.",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 140,
+    "sourceNumber": 44,
+    "question": "Un attaquant redirige le trafic vers une fausse passerelle par défaut pour tenter d’intercepter le trafic de données d’un réseau commuté. Quel type d’attaque pourrait y parvenir ?",
+    "options": [
+      "Inondation TCP SYN",
+      "Tunnelisation DNS",
+      "Usurpation DHCP",
+      "Empoisonnement du cache ARP"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "dans les attaques d’usurpation DHCP, un attaquant configure un faux serveur DHCP sur le réseau pour émettre des adresses DHCP aux clients dans le but de forcer les clients à utiliser une fausse passerelle par défaut, et autres faux services. La surveillance DHCP est une fonctionnalité du commutateur Cisco qui peut atténuer les attaques DHCP. La privation d’adresses MAC et l’espionnage d’adresses MAC ne sont pas des attaques de sécurité reconnues. L’usurpation d’adresse MAC est une menace pour la sécurité du réseau.",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 141,
+    "sourceNumber": 46,
+    "question": "Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des renifleurs de paquets ?",
+    "options": [
+      "pour détecter les outils installés dans les fichiers et les répertoires qui permettent aux pirates d’accéder et de contrôler à distance un ordinateur ou un réseau",
+      "pour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau",
+      "pour sonder et tester la robustesse d’un pare-feu en utilisant des paquets falsifiés spécialement créés",
+      "pour capturer et analyser les paquets dans les LAN Ethernet traditionnels ou les WLAN"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 142,
+    "sourceNumber": 53,
+    "question": "Quels sont les deux scénarios qui entraîneraient une incompatibilité duplex ? (Choisissez deux réponses.)",
+    "options": [
+      "connecter un appareil avec négociation automatique à un autre qui est manuellement réglé sur full-duplex",
+      "démarrage et arrêt d’une interface de routeur pendant une opération normale",
+      "connecter un appareil avec une interface fonctionnant à 100 Mbps à un autre avec une interface fonctionnant à 1 000 Mbps",
+      "configuration incorrecte du routage dynamique",
+      "régler manuellement les deux appareils connectés sur différents modes duplex"
+    ],
+    "correct": [
+      0,
+      4
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "NAT"
+  },
+  {
+    "id": 143,
+    "sourceNumber": 57,
+    "question": "Quels types de ressources sont nécessaires pour un hyperviseur de type 1 ?",
+    "options": [
+      "un VLAN dédié",
+      "une console de gestion",
+      "un système d’exploitation hôte"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 144,
+    "sourceNumber": 69,
+    "question": "Quels sont les deux énoncés décrivant l’utilisation d’algorithmes asymétriques ? (Choisissez deux réponses.)",
+    "options": [
+      "Les clés publiques et privées peuvent être utilisées de manière interchangeable.",
+      "Si une clé publique est utilisée pour chiffrer les données, une clé publique doit être utilisée pour déchiffrer les données.",
+      "Si une clé privée est utilisée pour chiffrer les données, une clé publique doit être utilisée pour déchiffrer les données.",
+      "Si une clé publique est utilisée pour chiffrer les données, une clé privée doit être utilisée pour déchiffrer les données.",
+      "Si une clé privée est utilisée pour chiffrer les données, une clé privée doit être utilisée pour déchiffrer les données."
+    ],
+    "correct": [
+      2,
+      3
+    ],
+    "explanation": "Les algorithmes asymétriques utilisent deux clés : une clé publique et une clé privée. Les deux clés sont capables du processus de chiffrement, mais la clé correspondante complémentaire est requise pour le déchiffrement. Si une clé publique chiffre les données, la clé privée correspondante déchiffre les données. L’inverse est également vrai. Si une clé privée chiffre les données, la clé publique correspondante déchiffre les données.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "NAT"
+  },
+  {
+    "id": 145,
+    "sourceNumber": 70,
+    "question": "Reportez-vous à l’illustration. Un administrateur réseau a déployé QoS et a configuré le réseau pour marquer le trafic sur les téléphones VoIP ainsi que sur les commutateurs de couche 2 et de couche 3. Où le marquage initial doit-il avoir lieu pour établir la limite de confiance ?",
+    "options": [
+      "Frontière de confiance 4",
+      "Frontière de confiance 3",
+      "Frontière de confiance 1",
+      "Frontière de confiance 2"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "Le trafic doit être classé et marqué aussi près que possible de sa source. La limite de confiance identifie à quel périphérique le trafic marqué doit être approuvé. Le trafic marqué sur les téléphones VoIP serait considéré comme fiable lorsqu’il se déplace vers le réseau de l’entreprise.",
     "images": [
-      "assets/image23.jpeg",
-      "assets/image18.png",
-      "assets/image35.jpeg",
-      "assets/image40.gif",
-      "assets/image8.png",
-      "assets/image32.jpeg",
-      "assets/image48.png",
-      "assets/image9.jpeg",
-      "assets/image35.jpeg",
-      "assets/image34.png",
+      "assets/image23.jpeg"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "QoS"
+  },
+  {
+    "id": 146,
+    "sourceNumber": 71,
+    "question": "Quels sont les deux avantages de l’extension de la connectivité de la couche d’accès aux utilisateurs via un support sans fil ? (Choisissez deux réponses.)",
+    "options": [
+      "coûts réduits",
+      "diminution du nombre de points de défaillance critiques",
+      "flexibilité accrue",
+      "augmentation de la disponibilité de la bande passante",
+      "plus d’options de gestion du réseau"
+    ],
+    "correct": [
+      0,
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "Conception réseau"
+  },
+  {
+    "id": 147,
+    "sourceNumber": 74,
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\n_Si un paquet avec une adresse source de 10.1.1.201, une adresse de destination de 192.31.7.45 et un protocole de 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
+    "options": [
+      "autorisé",
+      "refusé"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 148,
+    "sourceNumber": 76,
+    "question": "Reportez-vous à l’illustration. Quel format de données est utilisé pour représenter les données pour les applications d’automatisation de réseau ?",
+    "options": [
+      "XML",
+      "YAML",
+      "HTML",
+      "JSON"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "Les formats de données courants utilisés dans de nombreuses applications, y compris l’automatisation du réseau et la programmabilité, sont les suivants :\n_JavaScript Object Notation (JSON) : dans JSON, les données connues sous le nom d’objet sont une ou plusieurs paires clé/valeur entre accolades { }. Les clés doivent être des chaînes entre guillemets doubles » « . Les clés et les valeurs sont séparées par deux-points.\n_Langage de balisage extensible (XML) : en XML, les données sont incluses dans un ensemble de balises associées <tag>data</tag>.\n_YAML n’est pas un langage de balisage (YAML) : dans YAML, les données connues sous le nom d’objet sont constituées d’une ou de plusieurs paires clé/valeur. Les paires clé-valeur sont séparées par deux-points sans utiliser de guillemets. YAML utilise l’indentation pour définir sa structure, sans utiliser de crochets ni de virgules.",
+    "images": [
+      "assets/image18.png"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Automatisation"
+  },
+  {
+    "id": 149,
+    "sourceNumber": 77,
+    "question": "Quelle étape QoS doit avoir lieu avant que les paquets puissent être marqués ?",
+    "options": [
+      "classification",
+      "mise en forme",
+      "faire la queue",
+      "police"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "QoS"
+  },
+  {
+    "id": 150,
+    "sourceNumber": 79,
+    "question": "Une entreprise doit interconnecter plusieurs succursales dans une zone métropolitaine. L’ingénieur réseau recherche une solution qui fournit un trafic convergé à haut débit, y compris la voix, la vidéo et les données sur la même infrastructure réseau. La société souhaite également une intégration facile à son infrastructure LAN existante dans ses bureaux. Quelle technologie recommander ?",
+    "options": [
+      "Frame Relay",
+      "réseau étendu Ethernet",
+      "VSAT",
+      "RNIS"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 151,
+    "sourceNumber": 81,
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\n_Si un paquet avec une adresse source de 10.1.3.8, une adresse de destination de 10.10.3.8 et un protocole de 53 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
+    "options": [
+      "refusé",
+      "autorisé"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 152,
+    "sourceNumber": 86,
+    "question": "Reportez-vous à l’illustration. De nombreux employés perdent le temps de l’entreprise à accéder aux médias sociaux sur leurs ordinateurs de travail. L’entreprise veut arrêter cet accès. Quel est le meilleur type et emplacement ACL à utiliser dans cette situation ?",
+    "options": [
+      "LCA étendue sortante sur l’interface WAN R2 vers Internet",
+      "ACL standard sortant sur l’interface WAN R2 vers Internet",
+      "ACL standard sortant sur R2 S0/0/0",
+      "LCA étendues entrantes sur R1 G0/0 et G0/1"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image35.jpeg"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 153,
+    "sourceNumber": 90,
+    "question": "Dans quel état OSPF l’élection DR/BDR est-elle effectuée ?",
+    "options": [
+      "ExStart",
+      "Init",
+      "Bidirectionnel",
+      "Échange"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 154,
+    "sourceNumber": 93,
+    "question": "Reportez-vous à l’illustration. Si le commutateur redémarre et que tous les routeurs doivent rétablir les contiguïtés OSPF, quels routeurs deviendront les nouveaux DR et BDR ?",
+    "options": [
+      "Le routeur R3 deviendra le DR et le routeur R1 deviendra le BDR.",
+      "Le routeur R4 deviendra le DR et le routeur R3 deviendra le BDR.",
+      "Le routeur R1 deviendra le DR et le routeur R2 deviendra le BDR.",
+      "Le routeur R3 deviendra le DR et le routeur R2 deviendra le BDR."
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "les élections OSPF d’un DR sont basées sur les éléments suivants par ordre de priorité :\npriorité la plus élevée de 1 à 255 (0 = jamais un DR)\nID de routeur le plus élevé\nl’adresse IP la plus élevée d’un bouclage ou d’une interface active en l’absence d’ID de routeur configuré manuellement. Les adresses IP de bouclage ont une priorité plus élevée que les autres interfaces.\nDans ce cas, les routeurs R3 et R1 ont la priorité de routeur la plus élevée. Entre les deux, R3 a l’ID de routeur le plus élevé. Par conséquent, R3 deviendra le DR et R1 deviendra le BDR.",
+    "images": [
+      "assets/image40.gif"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 155,
+    "sourceNumber": 94,
+    "question": "Quel type de serveur serait utilisé pour conserver un enregistrement historique des messages provenant des périphériques réseau surveillés ?",
+    "options": [
+      "DNS",
+      "imprimer",
+      "DHCP",
+      "syslog",
+      "authentification"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Sécurité"
+  },
+  {
+    "id": 156,
+    "sourceNumber": 95,
+    "question": "Lorsque QoS est implémenté dans un réseau convergé, quels sont les deux facteurs qui peuvent être contrôlés pour améliorer les performances du réseau pour le trafic en temps réel ? (Choisissez deux réponses.)",
+    "options": [
+      "adressage des paquets",
+      "délai",
+      "jitter",
+      "routage de paquets",
+      "vitesse de liaison"
+    ],
+    "correct": [
+      1,
+      2
+    ],
+    "explanation": "Le délai est la latence entre un appareil émetteur et récepteur. La gigue est la variation du retard des paquets reçus. Le délai et la gigue doivent être contrôlés afin de prendre en charge le trafic voix et vidéo en temps réel.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "QoS"
+  },
+  {
+    "id": 157,
+    "sourceNumber": 97,
+    "question": "Quel protocole envoie des annonces périodiques entre les appareils Cisco connectés afin de connaître le nom de l’appareil, la version de l’IOS, ainsi que le nombre et le type d’interfaces ?",
+    "options": [
+      "CDP",
+      "SNMP",
+      "NTP",
+      "LLDP"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Sécurité"
+  },
+  {
+    "id": 158,
+    "sourceNumber": 102,
+    "question": "Quel type de VPN permet la multidiffusion et la diffusiontrafic rapide via un VPN de site à site sécurisé ?",
+    "options": [
+      "VPN multipoint dynamique",
+      "VPN SSL",
+      "Interface de tunnel virtuel IPsec",
+      "GRE sur IPsec"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 159,
+    "sourceNumber": 107,
+    "question": "Comment la virtualisation facilite-t-elle la reprise après sinistre dans un centre de données ?",
+    "options": [
+      "Le matériel n’a pas besoin d’être identique.",
+      "(Autre cas) Le matériel sur le site de récupération ne doit pas nécessairement être identique à l’équipement de production.",
+      "L’alimentation est toujours fournie.",
+      "Moins d’énergie est consommée.",
+      "Le provisionnement du serveur est plus rapide."
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "explanation": "La reprise après sinistre est la manière dont une entreprise s’y prend pour accéder aux applications, aux données et au matériel susceptibles d’être affectés lors d’un sinistre. La virtualisation offre une indépendance matérielle, ce qui signifie que le site de reprise après sinistre n’a pas besoin d’avoir exactement l’équipement que l’équipement en production. Le provisionnement de serveur est pertinent lorsqu’un serveur est créé pour la première fois. Bien que les centres de données disposent de générateurs de secours, l’ensemble du centre de données est conçu pour la reprise après sinistre. Un centre de données particulier ne pourrait jamais garantir que le centre de données lui-même ne serait jamais sans électricité.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 160,
+    "sourceNumber": 112,
+    "question": "Quel protocole utilise des agents résidant sur des appareils gérés pour collecter et stocker des informations sur l’appareil et son fonctionnement ?",
+    "options": [
+      "SYSLOG",
+      "TFTP",
+      "CBWFQ",
+      "SNMP"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Sécurité"
+  },
+  {
+    "id": 161,
+    "sourceNumber": 113,
+    "question": "Un administrateur configure l’OSPF à zone unique sur un routeur. L’un des réseaux qui doit être annoncé est 10.27.27.0 255.255.255.0. Quel masque générique l’administrateur utiliserait-il dans la déclaration de réseau OSPF ?",
+    "options": [
+      "0.0.0.63",
+      "0.0.0.255",
+      "0.0.0.31",
+      "0.0.0.15"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 162,
+    "sourceNumber": 114,
+    "question": "Quand un routeur compatible OSPF passera-t-il de l’état Down à l’état Init ?",
+    "options": [
+      "lorsqu’une interface compatible OSPF devient active",
+      "dès que le routeur démarre",
+      "lorsque le routeur reçoit un paquet Hello d’un routeur voisin",
+      "dès que le processus d’élection DR/BDR est terminé"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 163,
+    "sourceNumber": 115,
+    "question": "Quel type de trafic est décrit comme ayant un volume élevé de données par paquet ?",
+    "options": [
+      "données",
+      "vidéo",
+      "voix"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 164,
+    "sourceNumber": 122,
+    "question": "Une entreprise a consolidé plusieurs serveurs et recherche un programme ou un firmware pour créer et contrôler des machines virtuelles qui ont accès à tout le matériel des serveurs consolidés. Quel service ou technologie répondrait à cette exigence ?",
+    "options": [
+      "ACI Cisco",
+      "réseau défini par logiciel",
+      "Hyperviseur de type 1",
+      "APIC-EM"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 165,
+    "sourceNumber": 123,
+    "question": "Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour identifier les adresses locales internes à traduire ?",
+    "options": [
+      "ip nat inside source list 24 interface serial 0/1/0 surcharge",
+      "ip nat inside source list 14 pool POOL-STAT surcharge",
+      "liste d’accès 10 permis 172.19.89.0 0.0.0.255",
+      "ip nat dans la liste des sources ACCTNG pool POOL-STAT"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 166,
+    "sourceNumber": 125,
+    "question": "Reportez-vous à l’illustration. Un administrateur essaie de sauvegarder la configuration en cours d’exécution du routeur sur une clé USB et entre la commande copy usbflash0:/R1-config running-config sur la ligne de commande du routeur. Après avoir retiré la clé USB et l’avoir connectée à un PC, l’administrateur découvre que la configuration en cours n’a pas été correctement sauvegardée dans le fichier de configuration R1. Quel est le problème ?",
+    "options": [
+      "Le fichier existe déjà sur la clé USB et ne peut pas être écrasé.",
+      "Le disque n’a pas été correctement formaté avec le système de fichiers FAT16.",
+      "Il n’y a plus d’espace sur la clé USB.",
+      "La clé USB n’est pas reconnue par le routeur.",
+      "La commande utilisée par l’administrateur était incorrecte."
+    ],
+    "correct": [
+      4
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image8.png"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 167,
+    "sourceNumber": 126,
+    "question": "Quels sont les trois types de VPN qui sont des exemples de VPN site à site gérés par l’entreprise ? (Choisissez trois réponses.)",
+    "options": [
+      "VPN MPLS de couche 3",
+      "VPN IPsec",
+      "VPN multipoint dynamique Cisco",
+      "GRE sur VPN IPsec",
+      "VPN SSL sans client",
+      "VPN IPsec basé sur le client"
+    ],
+    "correct": [
+      1,
+      2,
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 3,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 168,
+    "sourceNumber": 128,
+    "question": "Dans un réseau OSPF, quelles sont les deux déclarations décrivant la base de données d’état des liens (LSDB) ? (Choisissez deux réponses.)",
+    "options": [
+      "Il peut être visualisé à l’aide de la commande show ip ospf database.",
+      "Une table de voisinage est créée sur la base de la LSDB.",
+      "Il contient une liste des meilleurs itinéraires vers un réseau particulier.",
+      "Il contient une liste de tous les routeurs voisins avec lesquels un routeur a établi une communication bidirectionnelle.",
+      "Tous les routeurs d’une zone ont une base de données d’état de liens identique."
+    ],
+    "correct": [
+      0,
+      4
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "OSPF"
+  },
+  {
+    "id": 169,
+    "sourceNumber": 129,
+    "question": "Dans un réseau OSPF, quelle structure OSPF est utilisée pour créer la table des voisins sur un routeur ?",
+    "options": [
+      "base de données de contiguïté",
+      "base de données d’état des liens",
+      "table de routage",
+      "base de données de transfert"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 170,
+    "sourceNumber": 130,
+    "question": "Quel protocole est utilisé dans un système composé de trois éléments : un gestionnaire, des agents et une base de données d’informations ?",
+    "options": [
+      "MPLS",
+      "SYSLOG",
+      "SNMP",
+      "TFTP"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 171,
+    "sourceNumber": 131,
+    "question": "Quel type de trafic est décrit comme n’étant pas résilient aux pertes ?",
+    "options": [
+      "données",
+      "vidéo",
+      "voix"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "le trafic vidéo a tendance à être imprévisible, incohérent et en rafale par rapport au trafic vocal. Par rapport à la voix, la vidéo est moins résistante aux pertes et contient un plus grand volume de données par paquet.",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 172,
+    "sourceNumber": 135,
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\n_Si un paquet avec une adresse source de 198.133.219.100, une adresse de destination de 198.133.219.170 et un protocole de 23 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
+    "options": [
+      "refusé",
+      "autorisé"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 173,
+    "sourceNumber": 140,
+    "question": "Reportez-vous à l’illustration. Si le commutateur redémarre et que tous les routeurs doivent rétablir les contiguïtés OSPF, quels routeurs deviendront les nouveaux DR et BDR ?",
+    "options": [
+      "Le routeur R2 deviendra le DR et le routeur R4 deviendra le BDR.",
+      "Le routeur R1 deviendra le DR et le routeur R3 deviendra le BDR.",
+      "Le routeur R4 deviendra le DR et le routeur R3 deviendra le BDR.",
+      "Le routeur R3 deviendra le DR et le routeur R2 deviendra le BDR."
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image32.jpeg"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 174,
+    "sourceNumber": 145,
+    "question": "Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour afficher toutes les traductions statiques qui ont été configurées ?",
+    "options": [
+      "afficher les traductions ip nat",
+      "afficher les traductions ip pat",
+      "afficher le cache IP",
+      "afficher la configuration en cours"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 175,
+    "sourceNumber": 147,
+    "question": "Quel type de VPN est le choix préféré pour la prise en charge et la facilité de déploiement pour l’accès à distance ?",
+    "options": [
+      "VPN SSL",
+      "GRE sur IPsec",
+      "VPN multipoint dynamique",
+      "Interface de tunnel virtuel IPsec"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 176,
+    "sourceNumber": 153,
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :\n_Si un paquet avec une adresse source de 192.168.10.244, une adresse de destination de 172.17.200.56 et un protocole de 80 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
+    "options": [
+      "refusé",
+      "autorisé"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 177,
+    "sourceNumber": 154,
+    "question": "Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des applications telles que Nmap, SuperScan et Angry IP Scanner ?",
+    "options": [
+      "pour détecter les outils installés dans les fichiers et les répertoires qui permettent aux pirates d’accéder et de contrôler à distance un ordinateur ou un réseau",
+      "pour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau",
+      "pour désosser les fichiers binaires lors de l’écriture d’exploits et de l’analyse de logiciels malveillants",
+      "pour sonder les périphériques réseau, les serveurs et les hôtes à la recherche de ports TCP ou UDP ouverts"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 178,
+    "sourceNumber": 155,
+    "question": "Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour afficher les traductions PAT dynamiques créées par le trafic ?",
+    "options": [
+      "afficher les traductions ip pat",
+      "afficher le cache IP",
+      "afficher la configuration en cours",
+      "afficher les traductions ip nat"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 179,
+    "sourceNumber": 156,
+    "question": "Un administrateur configure l’OSPF à zone unique sur un routeur. L’un des réseaux qui doit être annoncé est 172.16.91.0 255.255.255.192. Quel masque générique l’administrateur utiliserait-il dans la déclaration de réseau OSPF ?",
+    "options": [
+      "0.0.31.255",
+      "0.0.0.63",
+      "0.0.15.255",
+      "0.0.7.255"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 180,
+    "sourceNumber": 157,
+    "question": "Quel type de trafic est décrit comme nécessitant une latence inférieure à 400 ms ?",
+    "options": [
+      "vidéo",
+      "données",
+      "voix"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 181,
+    "sourceNumber": 160,
+    "question": "Reportez-vous à l’illustration. La société a décidé qu’aucun trafic provenant de tout autre réseau existant ou futur ne peut être transmis au réseau de Recherche et Développement. De plus, aucun trafic provenant du réseau de Recherche et Développement ne peut être transmis à d’autres réseaux existants ou futurs de l’entreprise. L’administrateur réseau a décidé que les listes de contrôle d’accès étendues sont mieux adaptées à ces exigences. Sur la base des informations fournies, que va faire l’administrateur réseau ?",
+    "options": [
+      "Une ACL sera placée sur l’interface R1 Gi0/0 et une ACL sera placée sur l’interface R2 Gi0/0.",
+      "Seule une ACL numérotée fonctionnera dans cette situation.",
+      "Une ACL sera placée sur l’interface R2 Gi0/0 et une ACL sera placée sur l’interface R2 S0/0/0.",
+      "Deux ACL (une dans chaque direction) seront placées sur l’interface R2 Gi0/0."
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image48.png"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 182,
+    "sourceNumber": 161,
+    "question": "Quel protocole utilise des nombres de strates plus petits pour indiquer que le serveur est plus proche de la source horaire autorisée que des nombres de strates plus grands ?",
+    "options": [
+      "TFTP",
+      "SYSLOG",
+      "NTP",
+      "MPLS"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 183,
+    "sourceNumber": 163,
+    "question": "Mettez en correspondance la méthode HTTP avec l’opération RESTful.",
+    "options": [
+      "vidéo",
+      "voix",
+      "données"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image9.jpeg"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Automatisation"
+  },
+  {
+    "id": 184,
+    "sourceNumber": 167,
+    "question": "Quel type de trafic est décrit comme composé de trafic nécessitant une priorité plus élevée s’il est interactif ?",
+    "options": [
+      "voix",
+      "données",
+      "vidéo"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 185,
+    "sourceNumber": 168,
+    "question": "Quel type de VPN offre une option flexible pour connecter un site central à des sites de succursale ?",
+    "options": [
+      "VPN MPLS",
+      "VPN multipoint dynamique",
+      "GRE sur IPsec"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 186,
+    "sourceNumber": 176,
+    "question": "Un ingénieur réseau a remarqué que certaines entrées de route réseau attendues ne s’affichent pas dans la table de routage. Quelles sont les deux commandes qui fourniront des informations supplémentaires sur l’état des adjacences de routeur, les intervalles de minuterie et l’ID de zone ? (Choisissez deux réponses.)",
+    "options": [
+      "afficher les protocoles IP",
+      "afficher ip ospf voisin",
+      "afficher la configuration en cours",
+      "afficher l’interface ip ospf",
+      "afficher ip route ospf"
+    ],
+    "correct": [
+      1,
+      3
+    ],
+    "explanation": "La commande show ip ospf interface affichera les informations de la table de routage qui sont déjà connues. Les commandes show running-configuration et show ip protocols afficheront les aspects de la configuration OSPF sur le routeur mais n’afficheront pas les détails de l’état de contiguïté ni les détails de l’intervalle de temporisation.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "OSPF"
+  },
+  {
+    "id": 187,
+    "sourceNumber": 177,
+    "question": "Quel type de VPN implique le transfert du trafic sur le backbone via l’utilisation d’étiquettes réparties entre les routeurs principaux ?",
+    "options": [
+      "VPN MPLS",
+      "GRE sur IPsec",
+      "Interface de tunnel virtuel IPsec",
+      "VPN multipoint dynamique"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 188,
+    "sourceNumber": 179,
+    "question": "Une entreprise a passé un contrat avec une société de sécurité réseau pour l’aider à identifier les vulnérabilités du réseau de l’entreprise. L’entreprise envoie une équipe pour effectuer des tests d’intrusion sur le réseau de l’entreprise. Pourquoi l’équipe utiliserait-elle des systèmes d’exploitation de piratage ?",
+    "options": [
+      "pour détecter toute preuve de piratage ou de logiciel malveillant dans un ordinateur ou un réseau",
+      "pour obtenir des systèmes d’exploitation spécialement conçus et préchargés avec des outils optimisés pour le piratage",
+      "pour encoder les données, à l’aide de schémas algorithmiques, afin d’empêcher tout accès non autorisé aux données chiffrées",
+      "pour désosser les fichiers binaires lors de l’écriture d’exploits et de l’analyse de logiciels malveillants"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 189,
+    "sourceNumber": 180,
+    "question": "Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour identifier une interface comme faisant partie du réseau mondial externe ?",
+    "options": [
+      "ip tape à l’intérieur",
+      "liste d’accès 10 permis 172.19.89.0 0.0.0.255",
+      "ip nat à l’intérieur",
+      "ip nat extérieur"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 190,
+    "sourceNumber": 181,
+    "question": "Pour éviter d’acheter du nouveau matériel, une entreprise souhaite tirer parti des ressources système inactives et consolider le nombre de serveurs tout en autorisant plusieurs systèmes d’exploitation sur une seule plate-forme matérielle. Quel service ou technologie répondrait à cette exigence ?",
+    "options": [
+      "centre de données",
+      "services cloud",
+      "virtualisation",
+      "serveurs dédiés",
+      "_Expliquez : La virtualisation des serveurs tire parti des ressources inactives et consolide le nombre de serveurs requis. Cela permet également à plusieurs systèmes d’exploitation d’exister sur une seule plate-forme matérielle."
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 191,
+    "sourceNumber": 182,
+    "question": "Quel type de VPN achemine les paquets via des interfaces de tunnel virtuel pour le chiffrement et le transfert ?",
+    "options": [
+      "VPN MPLS",
+      "Interface de tunnel virtuel IPsec",
+      "VPN multipoint dynamique",
+      "GRE sur IPsec"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 192,
+    "sourceNumber": 184,
+    "question": "Quel type de trafic est décrit comme utilisant TCP ou UDP en fonction du besoin de récupération d’erreur ?",
+    "options": [
+      "vidéo",
+      "voix",
+      "données"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 193,
+    "sourceNumber": 188,
+    "question": "Une ACL est appliquée en entrée sur l’interface du routeur. L’ACL se compose d’une seule entrée :\n_Si un paquet avec une adresse source de 172.18.20.40, une adresse de destination de 10.33.19.2 et un protocole de 21 est reçu sur l’interface, le paquet est-il autorisé ou refusé ?",
+    "options": [
+      "autorisé",
+      "refusé"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 194,
+    "sourceNumber": 189,
+    "question": "Quel type de trafic est décrit comme consistant en un trafic dont la priorité est inférieure s’il n’est pas stratégique ?",
+    "options": [
+      "vidéo",
+      "données",
+      "voix"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 195,
+    "sourceNumber": 192,
+    "question": "Quel protocole permet au gestionnaire d’interroger les agents pour accéder aux informations de la MIB de l’agent ?",
+    "options": [
+      "CBWFQ",
+      "SYSLOG",
+      "TFTP",
+      "SNMP"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Sécurité"
+  },
+  {
+    "id": 196,
+    "sourceNumber": 195,
+    "question": "Quel terme décrit l’ajout d’une valeur à l’en-tête du paquet, aussi proche que possible de la source, afin que le paquet corresponde à une politique définie ?",
+    "options": [
+      "police",
+      "marquage routier",
+      "détection précoce aléatoire pondérée (WRED)",
+      "mise en forme du trafic",
+      "chute de la queue"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 197,
+    "sourceNumber": 196,
+    "question": "Quels sont les trois facteurs liés au trafic qui influenceraient la sélection d’un type de lien WAN particulier ? (Choisissez trois réponses.)",
+    "options": [
+      "coût du lien",
+      "quantité de trafic",
+      "distance entre les sites",
+      "fiabilité",
+      "besoins de sécurité",
+      "type de trafic"
+    ],
+    "correct": [
+      1,
+      4,
+      5
+    ],
+    "explanation": "Les facteurs liés au trafic qui influencent la sélection d’un type de lien WAN particulier incluent le type de trafic, la quantité de trafic, les exigences de qualité et les exigences de sécurité. Les exigences de qualité incluent la garantie que le trafic qui ne peut pas tolérer les retards bénéficie d’un traitement prioritaire, ainsi que le trafic transactionnel commercial important.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 3,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 198,
+    "sourceNumber": 197,
+    "question": "Quelle commande serait utilisée dans le cadre de la configuration de NAT ou PAT pour lier les adresses locales internes au pool d’adresses disponibles pour la traduction PAT ?",
+    "options": [
+      "ip nat inside source list ACCTNG pool POOL-STAT",
+      "délai de traduction ip nat 36000",
+      "ip nat à l’intérieur de la liste source 14 pool POOL-STAT surcharge",
+      "ip nat à l’intérieur de la source statique 172.19.89.13 198.133.219.65"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "NAT"
+  },
+  {
+    "id": 199,
+    "sourceNumber": 198,
+    "question": "Quel protocole est un protocole de découverte de couche 2 indépendant du fournisseur qui doit être configuré séparément pour transmettre et recevoir des paquets d’informations ?",
+    "options": [
+      "SNMP",
+      "MPLS",
+      "LLDP",
+      "NTP"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "WAN / VPN"
+  },
+  {
+    "id": 200,
+    "sourceNumber": 199,
+    "question": "Une ACL est appliquée en entrée sur une interface de routeur. L’ACL se compose d’une seule entrée :",
+    "options": [
+      "autorisé",
+      "refusé"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 201,
+    "sourceNumber": 200,
+    "question": "Reportez-vous à l’illustration. La politique de l’entreprise exige que l’accès au réseau de serveurs soit limité aux seuls employés internes. Quel est le meilleur type et emplacement ACL à utiliser dans cette situation ?",
+    "options": [
+      "LCA étendue sortante sur R2 S0/0/1",
+      "ACL standard sortant sur R2 S0/0/0",
+      "ACL standard entrant sur l’interface WAN R2 se connectant à Internet",
+      "LCA étendue entrante sur R2 S0/0/0"
+    ],
+    "correct": [
+      0
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image35.jpeg"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 202,
+    "sourceNumber": 201,
+    "question": "Un technicien travaille sur un commutateur de couche 2 et remarque qu’un message %CDP-4-DUPLEX_MISMATCH continue d’apparaître pour le port G0/5. Quelle commande le technicien doit-il émettre sur le commutateur pour lancer le processus de dépannage ?",
+    "options": [
+      "afficher les voisins cdp",
+      "show ip interface brief",
+      "afficher l’interface g0/5",
+      "afficher le cdp"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 203,
+    "sourceNumber": 202,
+    "question": "Quelle ressource virtuelle serait installée sur un serveur réseau pour fournir un accès direct aux ressources matérielles ?",
+    "options": [
+      "VMware Fusion",
+      "une console de gestion",
+      "un VLAN dédié",
+      "un hyperviseur de type 1"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "Hyperviseurs de type 1, l’hyperviseur est installé directement sur le serveur ou le matériel réseau. Ensuite, des instances d’un système d’exploitation sont installées sur l’hyperviseur, comme illustré dans la figure. Les hyperviseurs de type 1 ont un accès direct aux ressources matérielles. Par conséquent, elles sont plus efficaces que les architectures hébergées. Les hyperviseurs de type 1 améliorent l’évolutivité, les performances et la robustesse.",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 204,
+    "sourceNumber": 203,
+    "question": "Reportez-vous à l’illustration. Un administrateur réseau a configuré une ACL standard pour autoriser uniquement les deux réseaux LAN connectés à R1 à accéder au réseau qui se connecte à l’interface R2 G0/1. Lorsque vous suivez les bonnes pratiques, à quel endroit l’ACL standard doit-elle être appliquée ?",
+    "options": [
+      "R2 G0/1 entrant",
+      "R2 S0/0/1 sortant",
+      "R1 S0/0/0 sortant",
+      "R2 G0/1 sortant",
+      "R2 G0/0 sortant"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [
+      "assets/image34.png"
+    ],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ACL"
+  },
+  {
+    "id": 205,
+    "sourceNumber": 204,
+    "question": "Quelle base de données OSPF est identique sur tous les routeurs convergés au sein de la même zone OSPF ?",
+    "options": [
+      "voisin",
+      "transfert",
+      "état du lien",
+      "adjacence"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "Quelle que soit la zone OSPF dans laquelle un routeur réside, la base de données de contiguïté, la table de routage et la base de données de transfert sont uniques pour chaque routeur. La base de données d’état des liens répertorie les informations sur tous les autres routeurs d’une zone et est identique sur tous les routeurs OSPF participant à cette zone.",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "OSPF"
+  },
+  {
+    "id": 206,
+    "sourceNumber": 205,
+    "question": "Quelles sont les deux fonctionnalités à prendre en compte lors de la création d’une ACL nommée ? (Choisissez deux réponses.)",
+    "options": [
+      "Utilisez des caractères alphanumériques si nécessaire.",
+      "Utilisez des caractères spéciaux, tels que ! ou * pour montrer l’importance de l’ACL.",
+      "Modifier l’ACL à l’aide d’un éditeur de texte.",
+      "Soyez descriptif lors de la création du nom ACL.",
+      "Utilisez un espace pour faciliter la lecture afin de séparer le nom de la description"
+    ],
+    "correct": [
+      0,
+      3
+    ],
+    "explanation": "Ce qui suit résume les règles à suivre pour les ACL nommées :\nAttribuez un nom pour identifier l’objectif de l’ACL.\nLes noms peuvent contenir des caractères alphanumériques.\nLes noms ne peuvent pas contenir d’espaces ni de ponctuation.\nC’estsuggéré que le nom soit écrit en MAJUSCULES.\nLes entrées peuvent être ajoutées ou supprimées dans l’ACL.",
+    "images": [],
+    "type": "multi",
+    "expectedChoices": 2,
+    "theme": "ACL"
+  },
+  {
+    "id": 207,
+    "sourceNumber": 206,
+    "question": "Mettez en correspondance la méthode API RESTful à la fonction CRUD.",
+    "options": [],
+    "correct": [],
+    "explanation": "",
+    "images": [
       "assets/image24.jpeg"
     ],
-    "type": "multi",
-    "expectedChoices": 9,
+    "type": "study",
+    "expectedChoices": 1,
+    "theme": "Automatisation"
+  },
+  {
+    "id": 208,
+    "sourceNumber": 207,
+    "question": "Quel type de trafic est décrit comme nécessitant au moins 384 Kbit/s de bande passante ?",
+    "options": [
+      "voix",
+      "données",
+      "vidéo"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "ENSA général"
+  },
+  {
+    "id": 209,
+    "sourceNumber": 208,
+    "question": "Quelle étape du processus de routage à état des liens est décrite par un routeur insérant les meilleurs chemins dans la table de routage ?",
+    "options": [
+      "déclarer un voisin inaccessible",
+      "exécuter l’algorithme SPF",
+      "chemins d’équilibrage de charge à coût égal",
+      "choisir le meilleur itinéraire"
+    ],
+    "correct": [
+      3
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
     "theme": "OSPF"
+  },
+  {
+    "id": 210,
+    "sourceNumber": 209,
+    "question": "Toute entreprise a décidé de réduire son empreinte environnementale en réduisant les coûts énergétiques, en déménageant dans une installation plus petite et en favorisant le télétravail. Quel service ou technologie répondrait à cette exigence ?",
+    "options": [
+      "centre de données",
+      "virtualisation",
+      "services cloud",
+      "serveurs dédiés"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Virtualisation / Cloud"
+  },
+  {
+    "id": 211,
+    "sourceNumber": 210,
+    "question": "Quelle technique QoS lisse le débit de sortie des paquets ?",
+    "options": [
+      "police",
+      "mise en forme",
+      "détection précoce aléatoire pondérée",
+      "Services intégrés (IntServ)",
+      "marquage"
+    ],
+    "correct": [
+      1
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "QoS"
+  },
+  {
+    "id": 212,
+    "sourceNumber": 212,
+    "question": "Un technicien réseau configure SNMPv3 et a défini un niveau de sécurité SNMPv3 authPriv. Quelle est la fonctionnalité d’utilisation de ce niveau ?",
+    "options": [
+      "authentifie un paquet en utilisant uniquement l’algorithme SHA",
+      "authentifie un paquet par une correspondance de chaîne du nom d’utilisateur ou de la chaîne de communauté",
+      "authentifie un paquet en utilisant soit la méthode HMAC avec MD5, soit la méthode SHA",
+      "authentifie un paquet en utilisant les algorithmes HMAC MD5 ou HMAC SHA et un nom d’utilisateur"
+    ],
+    "correct": [
+      2
+    ],
+    "explanation": "",
+    "images": [],
+    "type": "single",
+    "expectedChoices": 1,
+    "theme": "Sécurité"
   }
 ];

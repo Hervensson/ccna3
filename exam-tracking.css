@@ -1,0 +1,77 @@
+.attempt-overview,
+.tracking-exam-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.attempt-overview {
+  width: 100%;
+}
+
+.tracking-card,
+.tracking-mini {
+  border: 1px solid var(--line-soft);
+  border-radius: 7px;
+  background: rgba(7, 17, 31, 0.78);
+}
+
+.tracking-card {
+  flex: 1 1 160px;
+  min-height: 70px;
+  padding: 12px;
+}
+
+.tracking-mini {
+  min-width: 86px;
+  padding: 8px 10px;
+}
+
+.tracking-card span,
+.tracking-mini span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tracking-card strong,
+.tracking-mini strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.tracking-card.warning strong,
+.tracking-mini.warning strong {
+  color: var(--warn);
+}
+
+.tracking-card.complete strong,
+.tracking-mini.complete strong {
+  color: var(--good);
+}
+
+@media (max-width: 660px) {
+  .attempt-overview {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tracking-card {
+    min-height: 62px;
+  }
+
+  .tracking-exam-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tracking-mini {
+    min-width: 0;
+    padding: 7px;
+  }
+}
