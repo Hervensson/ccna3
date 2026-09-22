@@ -18,8 +18,4 @@
   if (!document.querySelector('link[href*="exam-tracking.css"]')) { const style=document.createElement("link"); style.rel="stylesheet"; style.href="exam-tracking.css?v=34"; style.dataset.examTracking="true"; document.head.append(style); }
   if (!document.querySelector('script[src*="exam-tracking.js"]')) { const script=document.createElement("script"); script.src="exam-tracking.js?v=34"; script.dataset.examTracking="true"; document.body.append(script); }
 })();
-(function loadBankMetadata() {
-  if (window.CCNA_BANK_META || document.querySelector('script[src*="bank-metadata.js"]')) return;
-  const script=document.createElement("script"); script.src="bank-metadata.js?v=35"; script.dataset.bankMetadata="true"; document.body.append(script);
-})();
 
