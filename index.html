@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="CCNA ENSA">
+  <title>CCNA 3 ENSA - Examen de revision</title>
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <section id="startScreen" class="start-screen">
+      <div class="brand-row"><span class="brand-mark">ENSA</span><span>CCNA 3</span></div>
+      <h1>Examen de revision</h1>
+      <p id="bankSummary" class="muted">135 questions importees du cours ENSA, dont 129 questions corrigees automatiquement.</p>
+      <div class="start-actions">
+        <button id="startBtn" class="primary-action">Demarrer une session</button>
+        <button id="redoErrorsStartBtn" class="secondary-action">Refaire mes erreurs</button>
+        <button id="studyBtn" class="secondary-action">Mode revision</button>
+      </div>
+      <div id="learningDashboard" class="learning-dashboard"></div>
+      <div id="startHistory" class="history-panel"></div>
+    </section>
+
+    <section id="examShell" class="exam-shell hidden">
+      <header class="topbar">
+        <div>
+          <div class="brand-row compact"><span class="brand-mark">ENSA</span><span id="modeLabel">Mode examen</span></div>
+          <h1 id="sessionTitle">Question 1</h1>
+          <p id="sessionMode" class="mode-line"></p>
+        </div>
+        <div class="exam-stats">
+          <div class="stat"><span>Temps</span><strong id="timer">01:15:00</strong></div>
+          <div class="stat"><span>Progression</span><strong id="progressText">0/70</strong></div>
+          <button id="resetBtn" class="ghost-button">Accueil</button>
+        </div>
+      </header>
+      <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="layout">
+        <aside class="question-map"><div id="questionGrid" class="question-grid"></div></aside>
+        <article class="question-panel">
+          <div id="questionMeta" class="question-meta"></div>
+          <h2 id="questionText" class="question-text"></h2>
+          <div id="imageWrap" class="image-wrap"></div>
+          <div id="answerArea" class="answer-area"></div>
+        </article>
+      </div>
+      <footer class="bottombar">
+        <button id="prevBtn" class="secondary-action">Precedente</button>
+        <button id="difficultBtn" class="flag-button">Question difficile</button>
+        <button id="nextBtn" class="secondary-action">Suivante</button>
+        <button id="submitBtn" class="primary-action">Soumettre</button>
+      </footer>
+    </section>
+
+    <section id="resultScreen" class="result-screen hidden">
+      <header class="result-header">
+        <div>
+          <div class="brand-row compact"><span class="brand-mark">ENSA</span><span>Resultats</span></div>
+          <h1>Correction finale</h1>
+        </div>
+        <div class="result-actions">
+          <button id="redoWrongBtn" class="secondary-action">Refaire les erreurs</button>
+          <button id="newFromResultsBtn" class="primary-action">Nouvelle session</button>
+        </div>
+      </header>
+      <div id="scoreBoard" class="score-board"></div>
+      <div id="themeStats" class="theme-stats"></div>
+      <div id="historyPanel" class="history-panel"></div>
+      <div class="result-tabs">
+        <button class="tab-button active" data-filter="wrong">Mes erreurs</button>
+        <button class="tab-button" data-filter="difficult">Questions difficiles</button>
+        <button class="tab-button" data-filter="all">Tout afficher</button>
+      </div>
+      <div id="resultsList" class="results-list"></div>
+    </section>
+  </main>
+  <div id="imageModal" class="image-modal hidden"><button id="imageModalClose" class="modal-close">Fermer</button><img id="imageModalImg" alt="Illustration agrandie"></div>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
