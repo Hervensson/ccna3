@@ -1,10 +1,10 @@
-const CACHE_NAME = "ccna-ensa-v6";
+const CACHE_NAME = "ccna-ensa-v7";
 const CORE_ASSETS = [
   "./", "./index.html", "./styles.css", "./enhance.css", "./ux-polish.css",
   "./mobile-history.css", "./mobile-fix.css", "./revision-pro.css", "./training-mode.css",
   "./top-nav.css", "./theme-selector.css", "./home-compact.css", "./progress-dashboard.css",
   "./exam-tracking.css", "./question-frequency.css", "./old-errors-history.css",
-  "./study-tools.css", "./mastery-tracking.css", "./questions.js", "./app.js",
+  "./study-tools.css", "./mastery-tracking.css", "./modern.css", "./questions.js", "./app.js",
   "./enhance.js", "./launch-fix.js", "./home-button.js", "./ux-polish.js",
   "./revision-pro.js", "./training-mode.js", "./top-nav.js", "./theme-selector.js",
   "./home-compact.js", "./progress-dashboard.js", "./mastery-tracking.js",
