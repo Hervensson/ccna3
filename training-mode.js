@@ -182,6 +182,7 @@
     if (!entry || !isAnswered(entry.question, entry.item)) return;
     const result = evaluate(entry.question, entry.item);
     markChoices(entry.question, entry.item, result);
+    const officialExplanation = String(entry.question.explanation || "").trim();
 
     const panel = document.createElement("section");
     panel.id = "trainingFeedback";
@@ -189,7 +190,7 @@
     panel.innerHTML = `
       <strong>${result.manual ? "Compare avec la correction" : result.correct ? "Bonne reponse" : "A revoir"}</strong>
       <p class="answer-line">Bonne reponse : ${escapeHtml(result.answerText || "Voir la correction finale.")}</p>
-      <p>${escapeHtml(entry.question.explanation || "Le document source ne donne pas plus d'explication pour cette question.")}</p>
+      <p class="training-explanation"><strong>${officialExplanation ? "Explication vérifiée" : "Réponse officielle vérifiée"}</strong><br>${escapeHtml(officialExplanation || "Le document confirme la réponse affichée, mais ne fournit pas de justification détaillée. Aucun raisonnement supplémentaire n'a été inventé.")}</p>
       <button type="button" class="training-next">Question suivante</button>
     `;
     panel.querySelector(".training-next")?.addEventListener("click", () => {

@@ -320,6 +320,7 @@
     if (!shell) return;
     placeInPanel(
       document.querySelector("#resultStudyShell-correction"),
+      document.querySelector("#examVerdict"),
       document.querySelector("#scoreBoard"),
       document.querySelector(".result-tabs"),
       document.querySelector("#resultsList"),

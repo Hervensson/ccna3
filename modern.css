@@ -603,6 +603,139 @@ input[type="number"] {
   color: var(--text);
 }
 
+.exam-verdict {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 16px 0 0;
+  padding: 18px 20px;
+  border: 1px solid var(--line-soft);
+  border-left: 5px solid var(--warn);
+  background: var(--panel-2);
+}
+
+.exam-verdict.passed {
+  border-left-color: var(--good);
+}
+
+.exam-verdict > div > span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.exam-verdict h2 {
+  margin: 5px 0 10px;
+  font-size: 23px;
+}
+
+.exam-verdict p {
+  margin: 4px 0;
+  color: var(--muted);
+}
+
+.exam-verdict p strong {
+  color: var(--text);
+}
+
+.exam-verdict-status {
+  flex: 0 0 auto;
+  padding: 11px 14px;
+  border: 1px solid #e7c46f;
+  border-radius: 6px;
+  background: #fff5dc;
+  color: #825600;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.exam-verdict.passed .exam-verdict-status {
+  border-color: #9bd9c4;
+  background: #e5f6f0;
+  color: #087054;
+}
+
+.score-board {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 0;
+  background: transparent;
+}
+
+.score-card {
+  min-height: 108px;
+}
+
+.score-card strong {
+  font-size: 28px;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.review-line-main {
+  display: block;
+  color: inherit;
+  line-height: 1.45;
+}
+
+.review-reason {
+  display: block;
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid var(--line-soft);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.explanation {
+  padding: 14px;
+  border: 1px solid #b8dfd7;
+  border-top: 1px solid #b8dfd7;
+  border-left: 4px solid var(--accent);
+  background: #eef9f6;
+  color: var(--text);
+}
+
+.explanation.reference-only {
+  border-color: #e7c46f;
+  border-left-color: var(--warn);
+  background: #fff8e8;
+}
+
+.explanation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.explanation-head span {
+  padding: 4px 7px;
+  border-radius: 4px;
+  background: rgba(10, 159, 134, 0.1);
+  color: #08705e;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.explanation.reference-only .explanation-head span {
+  background: rgba(238, 180, 65, 0.15);
+  color: #805500;
+}
+
+.explanation p {
+  margin: 9px 0 0;
+  white-space: pre-line;
+}
+
+.training-explanation strong {
+  color: var(--text);
+}
+
 html[data-theme="dark"] {
   color-scheme: dark;
   --bg: #0b1113;
@@ -821,6 +954,51 @@ html[data-theme="dark"] .theme-modal {
   background: rgba(3, 8, 9, 0.78);
 }
 
+html[data-theme="dark"] .exam-verdict {
+  border-color: var(--line-soft);
+  border-left-color: var(--warn);
+  background: var(--panel-2);
+}
+
+html[data-theme="dark"] .exam-verdict.passed {
+  border-left-color: var(--good);
+}
+
+html[data-theme="dark"] .exam-verdict-status {
+  border-color: #6d5a2c;
+  background: #352d19;
+  color: #f6d98d;
+}
+
+html[data-theme="dark"] .exam-verdict.passed .exam-verdict-status {
+  border-color: #285d53;
+  background: #14332e;
+  color: #a9eee0;
+}
+
+html[data-theme="dark"] .explanation {
+  border-color: #285d53;
+  border-left-color: var(--accent);
+  background: #14332e;
+  color: var(--text);
+}
+
+html[data-theme="dark"] .explanation.reference-only {
+  border-color: #6d5a2c;
+  border-left-color: var(--warn);
+  background: #2d2718;
+}
+
+html[data-theme="dark"] .explanation-head span {
+  background: rgba(67, 212, 182, 0.12);
+  color: #a9eee0;
+}
+
+html[data-theme="dark"] .explanation.reference-only .explanation-head span {
+  background: rgba(241, 196, 94, 0.12);
+  color: #f6d98d;
+}
+
 @media (max-width: 900px) {
   .start-screen h1 {
     font-size: 40px;
@@ -956,6 +1134,23 @@ html[data-theme="dark"] .theme-modal {
 
   .bottombar {
     padding: 10px;
+  }
+
+  .exam-verdict {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .exam-verdict-status {
+    align-self: flex-start;
+    white-space: normal;
+  }
+
+  .explanation-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

@@ -1,6 +1,7 @@
 const BANK = window.CCNA_QUESTIONS || [];
 const SESSION_SIZE = 70;
 const DURATION_MS = 75 * 60 * 1000;
+const PASSING_SCORE = 70;
 const VERSION = `ccna-ensa-${BANK.length}-v3`;
 const SESSION_KEY = "ccnaEnsaExamSession";
 const DIFFICULT_KEY = "ccnaEnsaDifficultQuestions";
@@ -57,6 +58,7 @@ const els = {
   difficultBtn: document.querySelector("#difficultBtn"),
   redoWrongBtn: document.querySelector("#redoWrongBtn"),
   newFromResultsBtn: document.querySelector("#newFromResultsBtn"),
+  examVerdict: document.querySelector("#examVerdict"),
   scoreBoard: document.querySelector("#scoreBoard"),
   themeStats: document.querySelector("#themeStats"),
   historyPanel: document.querySelector("#historyPanel"),
@@ -194,10 +196,34 @@ function bindEvents() {
 
 function handleKeyboard(event) {
   if (!state || state.submitted || els.examShell.classList.contains("hidden")) return;
-  if (["TEXTAREA", "INPUT"].includes(document.activeElement?.tagName)) return;
-  if (event.key === "ArrowLeft") goTo(state.current - 1);
-  if (event.key === "ArrowRight") goTo(state.current + 1);
-  if (event.key.toLowerCase() === "d") toggleDifficult();
+  if (event.ctrlKey || event.metaKey || event.altKey) return;
+  if (["TEXTAREA", "INPUT", "SELECT"].includes(document.activeElement?.tagName) || document.activeElement?.isContentEditable) return;
+  const imageModal = document.querySelector("#imageModal");
+  const themeModal = document.querySelector(".theme-modal");
+  if ((imageModal && !imageModal.classList.contains("hidden")) || (themeModal && !themeModal.classList.contains("hidden"))) return;
+
+  if (/^[1-9]$/.test(event.key)) {
+    const choice = els.answerArea.querySelectorAll(".choice")[Number(event.key) - 1];
+    if (choice) {
+      event.preventDefault();
+      choice.click();
+    }
+    return;
+  }
+
+  const key = event.key.toLowerCase();
+  if (event.key === "ArrowLeft" || key === "p") {
+    event.preventDefault();
+    els.prevBtn.click();
+  }
+  if (event.key === "ArrowRight" || key === "n") {
+    event.preventDefault();
+    els.nextBtn.click();
+  }
+  if (key === "d") {
+    event.preventDefault();
+    els.difficultBtn.click();
+  }
 }
 
 function renderStartExtras() {
@@ -275,6 +301,12 @@ function renderQuestion() {
   els.progressFill.style.width = `${(answered / state.items.length) * 100}%`;
   els.prevBtn.disabled = state.current === 0;
   els.nextBtn.disabled = state.current === state.items.length - 1;
+  els.prevBtn.title = "Question précédente (P ou flèche gauche)";
+  els.prevBtn.setAttribute("aria-keyshortcuts", "P ArrowLeft");
+  els.nextBtn.title = "Question suivante (N ou flèche droite)";
+  els.nextBtn.setAttribute("aria-keyshortcuts", "N ArrowRight");
+  els.difficultBtn.title = "Marquer comme difficile (D)";
+  els.difficultBtn.setAttribute("aria-keyshortcuts", "D");
   els.questionText.textContent = question.question;
 
   els.questionMeta.innerHTML = "";
@@ -338,12 +370,14 @@ function renderAnswers(question, item) {
     const button = document.createElement("button");
     button.className = `choice ${item.answer.includes(displayIndex) ? "selected" : ""}`;
     button.type = "button";
+    button.title = `Choisir cette réponse (touche ${displayIndex + 1})`;
+    button.setAttribute("aria-keyshortcuts", String(displayIndex + 1));
     button.addEventListener("click", () => chooseAnswer(question, item, displayIndex));
 
     const mark = document.createElement("span");
     mark.className = "choice-mark";
     mark.textContent = question.type === "multi"
-      ? item.answer.includes(displayIndex) ? "✓" : ""
+      ? item.answer.includes(displayIndex) ? "✓" : String(displayIndex + 1)
       : String.fromCharCode(65 + displayIndex);
 
     const text = document.createElement("span");
@@ -544,6 +578,8 @@ function saveHistoryIfNeeded(evaluated, summary) {
     correct: summary.correct,
     gradable: summary.gradable,
     percent: summary.percent,
+    passed: summary.percent >= PASSING_SCORE,
+    elapsedMs: elapsedDurationMs(),
     wrongIds,
     themes: themeStats(evaluated),
   };
@@ -560,11 +596,14 @@ function renderResults() {
   const evaluated = evaluatedSession();
   const summary = sessionSummary(evaluated);
   saveHistoryIfNeeded(evaluated, summary);
+  renderExamVerdict(evaluated, summary);
 
   els.scoreBoard.innerHTML = "";
   [
     ["Score", `${summary.correct}/${summary.gradable}`],
     ["Pourcentage", `${summary.percent}%`],
+    ["Résultat", summary.percent >= PASSING_SCORE ? "Réussi" : "À renforcer"],
+    ["Temps utilisé", formatElapsed(elapsedDurationMs())],
     ["Mes erreurs", String(summary.wrong)],
     ["Difficiles", String([...difficult].length)],
   ].forEach(([label, value]) => {
@@ -578,6 +617,42 @@ function renderResults() {
   renderThemeStats(evaluated);
   renderHistory(els.historyPanel, 5);
   renderResultsList();
+}
+
+function elapsedDurationMs() {
+  if (!state?.createdAt) return 0;
+  const end = state.submittedAt || Date.now();
+  return Math.min(DURATION_MS, Math.max(0, end - state.createdAt));
+}
+
+function formatElapsed(ms) {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  return hours
+    ? `${hours} h ${String(minutes).padStart(2, "0")} min`
+    : `${minutes} min ${String(seconds).padStart(2, "0")} s`;
+}
+
+function renderExamVerdict(evaluated, summary) {
+  if (!els.examVerdict) return;
+  const passed = summary.percent >= PASSING_SCORE;
+  const fullExam = state.mode === "normal" && state.items.length === Math.min(SESSION_SIZE, BANK.length);
+  const priorities = themeStats(evaluated).filter((row) => row.wrong > 0).slice(0, 3);
+  const priorityText = priorities.length
+    ? priorities.map((row) => `${row.theme} (${row.percent}%)`).join(" · ")
+    : "Aucun thème faible sur cette session";
+  els.examVerdict.className = `exam-verdict ${passed ? "passed" : "failed"}`;
+  els.examVerdict.innerHTML = `
+    <div>
+      <span>${fullExam ? "Examen blanc" : "Bilan de session"} · seuil ${PASSING_SCORE}%</span>
+      <h2>${passed ? "Objectif atteint" : "Révision encore nécessaire"}</h2>
+      <p><strong>Temps utilisé :</strong> ${formatElapsed(elapsedDurationMs())}</p>
+      <p><strong>Thèmes à retravailler :</strong> ${escapeHtml(priorityText)}</p>
+    </div>
+    <strong class="exam-verdict-status">${summary.percent}% · ${passed ? "RÉUSSI" : "À RENFORCER"}</strong>
+  `;
 }
 
 function themeStats(evaluated) {
@@ -689,7 +764,11 @@ function renderResultCard(entry, index) {
 
   if (question.type === "study") {
     review.append(reviewLine(`Ta note : ${(item.note || "Aucune note").trim()}`, "bad"));
-    question.options.forEach((option) => review.append(reviewLine(option, "good correct-answer")));
+    question.options.forEach((option) => review.append(reviewLine(
+      option,
+      "good correct-answer",
+      "Cet élément figure dans la correction officielle du document."
+    )));
   } else if (question.type === "matching") {
     const prompts = question.matching?.prompts || [];
     const correctAnswers = question.matching?.correct || [];
@@ -697,10 +776,14 @@ function renderResultCard(entry, index) {
       const selected = item.matchingAnswer?.[promptIndex] || "Aucune réponse";
       const expected = correctAnswers[promptIndex] || "";
       const ok = selected === expected;
-      review.append(reviewLine(`${prompt} → Ta réponse : ${selected}`, ok ? "good selected" : "bad selected"));
-      if (!ok) review.append(reviewLine(`Bonne réponse : ${expected}`, "good correct-answer"));
+      const reason = ok
+        ? `Cette association correspond à celle du corrigé officiel : ${prompt} → ${expected}.`
+        : `Le corrigé officiel associe « ${prompt} » à « ${expected} », et non à « ${selected} ».`;
+      review.append(reviewLine(`${prompt} → Ta réponse : ${selected}`, ok ? "good selected" : "bad selected", reason));
+      if (!ok) review.append(reviewLine(`Bonne réponse : ${expected}`, "good correct-answer", "Association vérifiée dans le corrigé du document."));
     });
   } else {
+    const expectedText = officialAnswerText(question);
     question.options.forEach((option, optionIndex) => {
       const selected = selectedOriginal.includes(optionIndex);
       const isCorrect = question.correct.includes(optionIndex);
@@ -712,7 +795,9 @@ function renderResultCard(entry, index) {
         selected ? "selected" : "",
         isCorrect ? "good correct-answer" : "",
         selected && !isCorrect ? "bad" : "",
-      ].join(" ").trim()));
+      ].join(" ").trim(), isCorrect
+        ? "Cette proposition fait partie de la réponse officielle du document."
+        : `Cette proposition n'est pas retenue par le corrigé. Réponse attendue : ${expectedText}.`));
     });
     if (!selectedOriginal.length) review.prepend(reviewLine("Ta réponse : aucune réponse sélectionnée", "bad selected"));
   }
@@ -720,10 +805,27 @@ function renderResultCard(entry, index) {
   card.append(review);
 
   const explanation = document.createElement("div");
-  explanation.className = "explanation";
-  explanation.textContent = question.explanation || "Le document source ne fournit pas d'explication détaillée pour cette question. La correction ci-dessus reprend la réponse marquée dans le corrigé.";
+  const officialExplanation = String(question.explanation || "").trim();
+  explanation.className = `explanation ${officialExplanation ? "verified" : "reference-only"}`;
+  const explanationHead = document.createElement("div");
+  explanationHead.className = "explanation-head";
+  const explanationTitle = document.createElement("strong");
+  explanationTitle.textContent = officialExplanation ? "Explication vérifiée" : "Réponse officielle vérifiée";
+  const explanationBadge = document.createElement("span");
+  explanationBadge.textContent = officialExplanation ? "Explication du document" : "Corrigé du document";
+  explanationHead.append(explanationTitle, explanationBadge);
+  const explanationText = document.createElement("p");
+  explanationText.textContent = officialExplanation || "Le document confirme la ou les bonnes réponses affichées ci-dessus, mais ne fournit pas de justification détaillée. Aucun raisonnement supplémentaire n'a été inventé.";
+  explanation.append(explanationHead, explanationText);
   card.append(explanation);
   return card;
+}
+
+function officialAnswerText(question) {
+  if (question.type === "matching") {
+    return (question.matching?.prompts || []).map((prompt, index) => `${prompt} → ${question.matching?.correct?.[index] || ""}`).join(" ; ");
+  }
+  return (question.correct || []).map((index) => question.options?.[index]).filter(Boolean).join(" ; ") || "voir le corrigé officiel";
 }
 
 function statusBadge(text, tone) {
@@ -733,10 +835,19 @@ function statusBadge(text, tone) {
   return span;
 }
 
-function reviewLine(text, tone) {
+function reviewLine(text, tone, reason = "") {
   const line = document.createElement("div");
   line.className = `review-line ${tone}`;
-  line.textContent = text;
+  const main = document.createElement("span");
+  main.className = "review-line-main";
+  main.textContent = text;
+  line.append(main);
+  if (reason) {
+    const detail = document.createElement("small");
+    detail.className = "review-reason";
+    detail.textContent = `Pourquoi : ${reason}`;
+    line.append(detail);
+  }
   return line;
 }
 
