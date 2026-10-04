@@ -146,6 +146,11 @@
     controls.querySelector("[data-compact-continue]")?.addEventListener("click", openCurrentSession);
     controls.querySelector("[data-compact-new]").addEventListener("click", () => {
       if (!confirmReplacement()) return;
+      if (typeof window.createSession === "function" && typeof window.renderExam === "function") {
+        window.createSession(null, "normal");
+        window.renderExam();
+        return;
+      }
       launchMixed(70);
     });
     controls.querySelector("[data-compact-correction]")?.addEventListener("click", () => {

@@ -5,6 +5,16 @@
   const SESSION_KEY = "ccnaEnsaExamSession";
   const RESUME_KEY = "ccnaEnsaOpenSession";
   const CORRECTION_SIZE_KEY = "ccnaEnsaCorrectionSize";
+  const REVISION_MODES = new Set([
+    "training",
+    "errors",
+    "success",
+    "targeted",
+    "unseen",
+    "theme",
+    "revision",
+    "quick",
+  ]);
 
   const readSession = () => {
     try {
@@ -110,7 +120,7 @@
 
   function currentEntry() {
     const session = readSession();
-    if (!session || session.mode !== "training" || session.submitted) return null;
+    if (!session || !REVISION_MODES.has(session.mode) || session.submitted) return null;
     const item = session.items?.[session.current || 0];
     const question = BANK.find((candidate) => candidate.id === item?.id);
     return question && item ? { session, item, question } : null;

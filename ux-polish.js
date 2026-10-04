@@ -90,7 +90,7 @@
     const picked = shuffled(pool).slice(0, Math.min(SESSION_SIZE, pool.length));
     write(keys.session, {
       version: VERSION,
-      mode: label === "Tout melanger" ? "normal" : "theme",
+      mode: label === "Tout melanger" ? "revision" : "theme",
       theme: label,
       createdAt: Date.now(),
       deadline: Date.now() + DURATION_MS,

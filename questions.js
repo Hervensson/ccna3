@@ -1684,12 +1684,12 @@ window.CCNA_QUESTIONS = [
     "question": "Reportez-vous à l’illustration. Si le commutateur redémarre et que tous les routeurs doivent rétablir les adjacences OSPF, quels routeurs deviendront les nouveaux DR et BDR ?",
     "options": [
       "Le routeur R4 deviendra le DR et le routeur R3 deviendra le BDR.",
-      "Le routeur R2 deviendra le DR et le routeur R1 deviendra le BDR.",
+      "Le routeur R3 deviendra le DR et le routeur R1 deviendra le BDR.",
       "Le router R3 deviendra DR et le routeur R2 deviendra BDR.",
       "Le routeur R1 deviendra le DR et le routeur R2 deviendra le BDR."
     ],
     "correct": [
-      2
+      1
     ],
     "explanation": "les élections OSPF d’un DR sont basées sur les éléments suivants par ordre de priorité :\npriorité la plus élevée de 1 à 255 (0 = jamais un DR)\nID de routeur le plus élevé\nl’adresse IP la plus élevée d’un bouclage ou d’une interface active en l’absence d’ID de routeur configuré manuellement. Les adresses IP de bouclage ont une priorité plus élevée que les autres interfaces.\nDans ce cas, les routeurs R3 et R1 ont la priorité de routeur la plus élevée. Entre les deux, R3 a l’ID de routeur le plus élevé. Par conséquent, R3 deviendra le DR et R1 deviendra le BDR.",
     "images": [
