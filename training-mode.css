@@ -85,6 +85,18 @@
   background: rgba(87, 214, 141, 0.1);
 }
 
+.exam-shell .choice.training-correct {
+  border-color: var(--good);
+  background: rgba(87, 214, 141, 0.12);
+  box-shadow: inset 4px 0 0 var(--good);
+}
+
+.exam-shell .choice.training-correct .choice-mark {
+  border-color: var(--good);
+  background: var(--good);
+  color: #061016;
+}
+
 .choice.training-wrong {
   border-color: rgba(255, 122, 144, 0.72);
   background: rgba(255, 122, 144, 0.1);
