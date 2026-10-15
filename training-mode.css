@@ -90,6 +90,27 @@
   background: rgba(255, 122, 144, 0.1);
 }
 
+.exam-shell .choice.selected.training-wrong {
+  border-color: var(--bad);
+  background: rgba(220, 93, 104, 0.14);
+  box-shadow: inset 4px 0 0 var(--bad);
+}
+
+.exam-shell .choice.selected.training-wrong .choice-mark {
+  border-color: var(--bad);
+  background: var(--bad);
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .training-feedback.bad {
+  border-color: rgba(255, 122, 133, 0.58);
+  background: rgba(255, 122, 133, 0.11);
+}
+
+.training-feedback.bad > strong:first-child {
+  color: var(--bad);
+}
+
 .matching-row.training-correct {
   border-color: rgba(87, 214, 141, 0.62);
 }
